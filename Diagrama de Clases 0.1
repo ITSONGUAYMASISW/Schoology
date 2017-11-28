@@ -1,0 +1,49 @@
+Schoology
+---------------------------------
+
+*Usuario*
+-id:		Int
+-nombre: 	String
+-apellido: 	String
+-correo: 	String
+-telefono: 	String
+---------------------------------
+---------------------------------
+*Entrega*
+-id: 		 Int
+-archivoAdjunto: File
+-descripcion: 	 String
+-fecha: 	 Date
+-idUsuario:	 Int  	     ((Estudiante)(Quien hace la entrega))	
+---------------------------------
+---------------------------------
+*Curso*
+-id:		 Int
+-codigo:	 String
+-nombre: 	 String
+-idUsuario: 	 Int  	     (Maestro/Administrador)
+---------------------------------
+---------------------------------
+*Actividad*
+-id:		Int
+-nombre: 	String
+-descripcion: 	String
+-publicacion: 	Date
+-vencimiento: 	Date
+-puntos:	double
+--------------------------------
+--------------------------------
+*CursoUsuario*
+-id:		Int
+-idCurso:	Int	(Curso al que esta inscrito un estudiante)
+-idUsuario:	Int	(Estuadiante inscrito)
+--------------------------------
+--------------------------------
+*ActividadEntrega*
+-id:		Int
+-idActividad: 	Int	(Actividad a la que se le hara la entrega)
+-idEntrega:	Int	(Entrega realizada(Esta contiene al Usuario que la realiza))
+--------------------------------
+--------------------------------
+
+
