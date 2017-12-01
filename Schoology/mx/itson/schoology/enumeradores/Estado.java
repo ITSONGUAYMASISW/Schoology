@@ -1,16 +1,16 @@
+
 package itson.schoology.enumeradores;
 
 /**
- * Esta enumerador representa el tipo de Evaluacion que se dara en una 
- * Actividad.
+ * Esta enumerador representa el estado en el que fue enviada una entrega.
  * @author JoseLuisChito
  * @author CCarballo
  * @author FranciscoQuijada
  * @author VivianMunguia
  */
-public enum Evaluacion {
+public enum Estado {
     
-    NUMERICA,
-    POR_ENTREGA
+    A_TIEMPO,
+    TARDE
     
 }
