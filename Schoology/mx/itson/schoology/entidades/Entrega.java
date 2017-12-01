@@ -2,71 +2,104 @@
 import java.io.File;
 import java.util.Date;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- *
+ * Esta clase representa a la entidad Entrega.
  * @author JoseLuisChito
+ * @author CCarballo
+ * @author FranciscoQuijada
+ * @author VivianMunguia
  */
 public class Entrega {
     private int id;
     private File archivoAdjunto;
     private String descripcion;
     private Date fecha;
-    private int idUsuario;
-    private int idActividad;
+    private Usuario estudiante;
+    private Actividad actividad;
 
+    /**
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @param id the id to set
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * @return the archivoAdjunto
+     */
     public File getArchivoAdjunto() {
         return archivoAdjunto;
     }
 
+    /**
+     * @param archivoAdjunto the archivoAdjunto to set
+     */
     public void setArchivoAdjunto(File archivoAdjunto) {
         this.archivoAdjunto = archivoAdjunto;
     }
 
+    /**
+     * @return the descripcion
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+     * @param descripcion the descripcion to set
+     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    /**
+     * @return the fecha
+     */
     public Date getFecha() {
         return fecha;
     }
 
+    /**
+     * @param fecha the fecha to set
+     */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    /**
+     * @return the estudiante
+     */
+    public Usuario getEstudiante() {
+        return estudiante;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    /**
+     * @param estudiante the estudiante to set
+     */
+    public void setEstudiante(Usuario estudiante) {
+        this.estudiante = estudiante;
     }
 
-    public int getIdActividad() {
-        return idActividad;
+    /**
+     * @return the actividad
+     */
+    public Actividad getActividad() {
+        return actividad;
     }
 
-    public void setIdActividad(int idActividad) {
-        this.idActividad = idActividad;
+    /**
+     * @param actividad the actividad to set
+     */
+    public void setActividad(Actividad actividad) {
+        this.actividad = actividad;
     }
-    
-    
+
 }

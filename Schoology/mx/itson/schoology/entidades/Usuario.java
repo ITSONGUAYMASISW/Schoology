@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- *
- * @author Dell
+ * Esta clase representa a la entidad Usuario.
+ * @author JoseLuisChito
+ * @author CCarballo
+ * @author FranciscoQuijada
+ * @author VivianMunguia
  */
 public class Usuario {
     

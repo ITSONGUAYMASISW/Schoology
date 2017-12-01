@@ -2,8 +2,11 @@
 import java.util.List;
 
 /**
- *
+ * Esta clase representa a la entidad Curso.
+ * @author JoseLuisChito
  * @author CCarballo
+ * @author FranciscoQuijada
+ * @author VivianMunguia
  */
 public class Curso{
     
