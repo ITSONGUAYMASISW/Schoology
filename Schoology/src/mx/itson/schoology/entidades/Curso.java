@@ -1,9 +1,13 @@
 package mx.itson.schoology.entidades;
 
-
-
-
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import mx.itson.schoology.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -15,6 +19,7 @@ import org.hibernate.Transaction;
  * @author FranciscoQuijada
  * @author VivianMunguia
  */
+@Entity
 public class Curso{
     
     private int id;
@@ -25,6 +30,8 @@ public class Curso{
     /**
      * @return the id
      */
+    @Id
+    @GeneratedValue
     public int getId() {
         return id;
     }
@@ -67,6 +74,8 @@ public class Curso{
     /**
      * @return the miembros
      */
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name="CursoUsuario", joinColumns={@JoinColumn(name="IdCurso")}, inverseJoinColumns={@JoinColumn(name="IdUsuario")}) 
     public List<Usuario> getMiembros() {
         return miembros;
     }
