@@ -1,8 +1,5 @@
 package mx.itson.schoology.entidades;
 
-
-
-
 /**
  * Esta clase representa a la entidad Usuario.
  * @author JoseLuisChito

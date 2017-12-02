@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mx.itson.schoology.utils;
-/**
- *
- * @author Francisco
- */
+
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -16,8 +9,10 @@ import org.hibernate.service.ServiceRegistry;
 
 /**
  * Define el inicio de sesión de Hibernate.
- * @author 
- * @version 0.1
+ * @author JoseLuisChito
+ * @author CCarballo
+ * @author FranciscoQuijada
+ * @author VivianMunguia
  */
 public class HibernateUtils {
     private static final SessionFactory sessionFactory;
