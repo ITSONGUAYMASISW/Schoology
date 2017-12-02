@@ -4,6 +4,9 @@ package mx.itson.schoology.entidades;
 
 
 import java.util.List;
+import mx.itson.schoology.utils.HibernateUtils;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  * Esta clase representa a la entidad Curso.
@@ -74,5 +77,29 @@ public class Curso{
     public void setMiembros(List<Usuario> miembros) {
         this.miembros = miembros;
     }
-        
+
+    /**
+     * Método para obtener datos.
+     * @return Devuelve cursos.
+     */
+        public List<Curso> obtenerTodos() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        List<Curso> cursos = (List<Curso>) session.createCriteria(Curso.class).list();
+        return cursos;
+    }
+
+    /**
+     * Método para guardar datos.
+     * @param cur
+     */
+    public void guardar(Curso cur) {
+        try {
+            Session sesion = HibernateUtils.getSessionFactory().openSession();
+            Transaction transaction = sesion.beginTransaction();
+            sesion.save(cur);
+            transaction.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

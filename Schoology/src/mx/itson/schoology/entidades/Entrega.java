@@ -2,6 +2,10 @@ package mx.itson.schoology.entidades;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
+import mx.itson.schoology.utils.HibernateUtils;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 
 /**
@@ -102,5 +106,29 @@ public class Entrega {
     public void setActividad(Actividad actividad) {
         this.actividad = actividad;
     }
+    
+    /**
+     * Método para obtener datos.
+     * @return Devuelve entregas.
+     */
+        public List<Entrega> obtenerTodos() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        List<Entrega> entregas = (List<Entrega>) session.createCriteria(Entrega.class).list();
+        return entregas;
+    }
 
+    /**
+     * Método para guardar datos.
+     * @param ent
+     */
+    public void guardar(Entrega ent) {
+        try {
+            Session sesion = HibernateUtils.getSessionFactory().openSession();
+            Transaction transaction = sesion.beginTransaction();
+            sesion.save(ent);
+            transaction.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
