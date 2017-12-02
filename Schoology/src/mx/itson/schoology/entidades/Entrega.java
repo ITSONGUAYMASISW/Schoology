@@ -3,6 +3,12 @@ package mx.itson.schoology.entidades;
 import java.io.File;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import mx.itson.schoology.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -15,9 +21,10 @@ import org.hibernate.Transaction;
  * @author FranciscoQuijada
  * @author VivianMunguia
  */
+@Entity
 public class Entrega {
     private int id;
-    private File archivoAdjunto;
+    private String archivoAdjunto;
     private String descripcion;
     private Date fecha;
     private Usuario estudiante;
@@ -26,6 +33,8 @@ public class Entrega {
     /**
      * @return the id
      */
+    @Id
+    @GeneratedValue
     public int getId() {
         return id;
     }
@@ -40,7 +49,7 @@ public class Entrega {
     /**
      * @return the archivoAdjunto
      */
-    public File getArchivoAdjunto() {
+    public String getArchivoAdjunto() {
         return archivoAdjunto;
     }
 
@@ -48,7 +57,7 @@ public class Entrega {
      * @param archivoAdjunto the archivoAdjunto to set
      */
     public void setArchivoAdjunto(File archivoAdjunto) {
-        this.archivoAdjunto = archivoAdjunto;
+        this.archivoAdjunto = archivoAdjunto.toString();
     }
 
     /**
@@ -82,6 +91,8 @@ public class Entrega {
     /**
      * @return the estudiante
      */
+    @OneToOne(cascade=CascadeType.ALL)
+    @PrimaryKeyJoinColumn  
     public Usuario getEstudiante() {
         return estudiante;
     }
@@ -96,6 +107,8 @@ public class Entrega {
     /**
      * @return the actividad
      */
+     @OneToOne(cascade=CascadeType.ALL)
+     @PrimaryKeyJoinColumn    
     public Actividad getActividad() {
         return actividad;
     }

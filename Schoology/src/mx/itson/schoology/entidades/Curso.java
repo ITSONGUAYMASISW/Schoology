@@ -75,7 +75,7 @@ public class Curso{
      * @return the miembros
      */
     @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="CursoUsuario", joinColumns={@JoinColumn(name="IdCurso")}, inverseJoinColumns={@JoinColumn(name="IdUsuario")}) 
+    @JoinTable(name="cursousuario", joinColumns={@JoinColumn(name="IdCurso")}, inverseJoinColumns={@JoinColumn(name="IdUsuario")}) 
     public List<Usuario> getMiembros() {
         return miembros;
     }

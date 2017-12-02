@@ -1,0 +1,1 @@
+http://www.codejava.net/frameworks/hibernate/hibernate-enum-type-mapping-example
