@@ -1,5 +1,17 @@
 package mx.itson.schoology.entidades;
 
+import java.io.File;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import mx.itson.schoology.utils.HibernateUtils;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 /**
  * Esta clase representa a la entidad Usuario.
  * @author JoseLuisChito
@@ -7,6 +19,7 @@ package mx.itson.schoology.entidades;
  * @author FranciscoQuijada
  * @author VivianMunguia
  */
+@Entity
 public class Usuario {
     
     private int id;
@@ -16,6 +29,8 @@ public class Usuario {
     private String contraseña;
     private String telefono;
 
+    @Id
+    @GeneratedValue
     public int getId() {
         return id;
     }
@@ -64,6 +79,34 @@ public class Usuario {
         this.telefono = telefono;
     }
     
-    
+    /**
+     * Método para obtener datos.
+     * @return Devuelve usuarios.
+     */
+        public List<Usuario> obtenerTodos() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        List<Usuario> usuarios = (List<Usuario>) session.createCriteria(Usuario.class).list();
+        return usuarios;
+    }
+
+    /**
+     * Método para guardar datos.
+     * @param u
+     * @return Un boolean;
+     */
+    public boolean guardar(Usuario u) {
+        
+        try {
+            Session sesion = HibernateUtils.getSessionFactory().openSession();
+            Transaction transaction = sesion.beginTransaction();
+            sesion.save(u);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+       
+    }
     
 }
