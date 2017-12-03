@@ -21,10 +21,16 @@ import mx.itson.schoology.enumeradores.Nota;
  * @author VivianMunguia
  */
 public class Metodos {
-    Usuario u = new Usuario();
+    
+    public void Trancision(JFrame actual, JFrame destino){
+        actual.setVisible(false);
+        destino.setVisible(true);
+        destino.setLocationRelativeTo(null);
+        destino.setUndecorated(true);
+    }
     
     public boolean RegistrarUsuario(String name, String lname, String email, String pass,String tel){
-        
+        Usuario u = new Usuario();
         u.setNombre(name);
         u.setApellido(lname);
         u.setCorreo(email);
@@ -36,12 +42,12 @@ public class Metodos {
     
     public boolean CrearCurso(String name, Usuario usuario){
         Curso curso = new Curso();
-        List<Usuario> usuarios = new ArrayList<Usuario>();
+        List<Usuario> usuarios = new ArrayList<>();
         usuarios.add(usuario);
-        
         curso.setNombre(name);
         curso.setCodigo(GenerarCodigo());
-        curso.guardar(curso);
+        curso.setMiembros(usuarios);
+        
         return curso.guardar(curso);
     }
     
@@ -81,23 +87,17 @@ public class Metodos {
     }
     
     public boolean IniciarSesion(JTextField usuario, JPasswordField contrasena){
-
+        Usuario u = new Usuario();
         List<Usuario> usuarios = u.obtenerTodos();
         
         for (int i = 0; i < usuarios.size(); i++) {
-            if (usuarios.get(i).getCorreo().equals(usuario) &&
+            if (usuarios.get(i).getCorreo().equals(usuario.getText()) &&
                 usuarios.get(i).getContrasena().equals(contrasena.toString())) {
                 return true;
             }
         }
         
          return false;
-    }
-    
-    public boolean CrearCurso(){
-        
-        
-        return false;
     }
     
     public String GenerarCodigo(){
