@@ -3,7 +3,15 @@ package mx.itson.schoology.entidades;
 
 
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToOne;
 import mx.itson.schoology.enumeradores.Evaluacion;
+import mx.itson.schoology.utils.HibernateUtils;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  * Esta clase representa a la entidad Actividad.
@@ -95,6 +103,7 @@ public class Actividad {
     /**
      * @return the curso
      */
+    @OneToOne(cascade=CascadeType.ALL)
     public Curso getCurso() {
         return curso;
     }
@@ -109,6 +118,7 @@ public class Actividad {
     /**
      * @return the evaluacion
      */
+    @Enumerated(EnumType.STRING)
     public Evaluacion getEvaluacion() {
         return evaluacion;
     }
@@ -119,6 +129,36 @@ public class Actividad {
     public void setEvaluacion(Evaluacion evaluacion) {
         this.evaluacion = evaluacion;
     }
+    
+        /**
+     * Método para obtener datos.
+     * @return Devuelve actividades.
+     */
+        public List<Actividad> obtenerTodos() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        List<Actividad> actividades = (List<Actividad>) session.createCriteria(Actividad.class).list();
+        return actividades;
+    }
+
+    /**
+     * Método para guardar datos.
+     * @param a
+     * @return Un boolean;
+     */
+    public boolean guardar(Actividad a) {
+        
+        try {
+            Session sesion = HibernateUtils.getSessionFactory().openSession();
+            Transaction transaction = sesion.beginTransaction();
+            sesion.save(a);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    
+}
 
     
     
