@@ -21,7 +21,7 @@ public class Metodos {
         u.setNombre(name);
         u.setApellido(lname);
         u.setCorreo(email);
-        u.setContraseña(pass);
+        u.setContrasena(pass);
         u.setTelefono(tel);
         
         return u.guardar(u);
@@ -33,7 +33,7 @@ public class Metodos {
         
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getCorreo().equals(usuario) &&
-                usuarios.get(i).getContraseña().equals(contrasena.toString())) {
+                usuarios.get(i).getContrasena().equals(contrasena.toString())) {
                 return true;
             }
         }

@@ -94,6 +94,7 @@ public class Curso{
         public List<Curso> obtenerTodos() {
         Session session = HibernateUtils.getSessionFactory().openSession();
         List<Curso> cursos = (List<Curso>) session.createCriteria(Curso.class).list();
+        session.close();
         return cursos;
     }
 

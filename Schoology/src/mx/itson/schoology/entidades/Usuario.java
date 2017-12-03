@@ -26,7 +26,7 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String correo;
-    private String contraseña;
+    private String contrasena;
     private String telefono;
     
     /**
@@ -80,16 +80,16 @@ public class Usuario {
         this.correo = correo;
     }
      /**
-     * @return the contraseña
+     * @return the contrasena
      */
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
      /**
-     * @param contraseña the contraseña to set
+     * @param contrasena the contrasena to set
      */
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
     /**
      * @return the telefono
@@ -111,6 +111,7 @@ public class Usuario {
         public List<Usuario> obtenerTodos() {
         Session session = HibernateUtils.getSessionFactory().openSession();
         List<Usuario> usuarios = (List<Usuario>) session.createCriteria(Usuario.class).list();
+        session.close();
         return usuarios;
     }
 

@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import mx.itson.schoology.utils.HibernateUtils;
@@ -56,8 +57,8 @@ public class Entrega {
     /**
      * @param archivoAdjunto the archivoAdjunto to set
      */
-    public void setArchivoAdjunto(File archivoAdjunto) {
-        this.archivoAdjunto = archivoAdjunto.toString();
+    public void setArchivoAdjunto(String archivoAdjunto) {
+        this.archivoAdjunto = archivoAdjunto;
     }
 
     /**
@@ -91,8 +92,8 @@ public class Entrega {
     /**
      * @return the estudiante
      */
-    @OneToOne(cascade=CascadeType.ALL)
-    @PrimaryKeyJoinColumn  
+    @OneToOne(cascade=CascadeType.ALL)  
+    @JoinColumn (name="idUsuario")
     public Usuario getEstudiante() {
         return estudiante;
     }
@@ -108,7 +109,7 @@ public class Entrega {
      * @return the actividad
      */
      @OneToOne(cascade=CascadeType.ALL)
-     @PrimaryKeyJoinColumn    
+     @JoinColumn (name="idActividad")
     public Actividad getActividad() {
         return actividad;
     }

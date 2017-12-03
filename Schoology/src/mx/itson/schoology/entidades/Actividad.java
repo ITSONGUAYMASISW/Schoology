@@ -5,9 +5,16 @@ package mx.itson.schoology.entidades;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import mx.itson.schoology.enumeradores.Evaluacion;
 import mx.itson.schoology.utils.HibernateUtils;
 import org.hibernate.Session;
@@ -20,6 +27,7 @@ import org.hibernate.Transaction;
  * @author FranciscoQuijada
  * @author VivianMunguia
  */
+@Entity
 public class Actividad {
     
     private int id;
@@ -33,6 +41,8 @@ public class Actividad {
     /**
      * @return the id
      */
+    @Id
+    @GeneratedValue
     public int getId() {
         return id;
     }
@@ -104,6 +114,7 @@ public class Actividad {
      * @return the curso
      */
     @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn (name="idCurso")
     public Curso getCurso() {
         return curso;
     }
@@ -152,6 +163,7 @@ public class Actividad {
             Transaction transaction = sesion.beginTransaction();
             sesion.save(a);
             transaction.commit();
+            sesion.close();
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -12,13 +12,13 @@
    </property>
 
    <property name="hibernate.connection.url">
-      jdbc:mysql://localhost/schoologyDB
+      jdbc:mysql://localhost/schoology
    </property>
    <property name="hibernate.connection.username">
       root
    </property>
    <property name="hibernate.connection.password">
-      C7GCKpix
+      Tangamandapio
    </property>
    <mapping class="mx.itson.schoology.entidades.Actividad"/>
    <mapping class="mx.itson.schoology.entidades.Calificacion"/>

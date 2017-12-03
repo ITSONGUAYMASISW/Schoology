@@ -6,6 +6,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import mx.itson.schoology.enumeradores.Estado;
 import mx.itson.schoology.enumeradores.Nota;
@@ -46,6 +47,7 @@ public class Calificacion {
      * @return the Actividad
      */
     @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn (name="idActividad")
     public Actividad getActividad() {
         return actividad;
     }
@@ -59,6 +61,7 @@ public class Calificacion {
      * @return the Estudiante
      */
     @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn (name="idUsuario")
     public Usuario getEstudiante() {
         return estudiante;
     }
@@ -102,6 +105,7 @@ public class Calificacion {
         public List<Calificacion> obtenerTodos() {
         Session session = HibernateUtils.getSessionFactory().openSession();
         List<Calificacion> calificaciones = (List<Calificacion>) session.createCriteria(Calificacion.class).list();
+        session.close();
         return calificaciones;
     }
 
