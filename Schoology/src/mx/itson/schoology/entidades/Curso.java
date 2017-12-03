@@ -102,14 +102,16 @@ public class Curso{
      * Método para guardar datos.
      * @param cur
      */
-    public void guardar(Curso cur) {
+    public boolean guardar(Curso cur) {
         try {
             Session sesion = HibernateUtils.getSessionFactory().openSession();
             Transaction transaction = sesion.beginTransaction();
             sesion.save(cur);
             transaction.commit();
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
         }
     }
 }

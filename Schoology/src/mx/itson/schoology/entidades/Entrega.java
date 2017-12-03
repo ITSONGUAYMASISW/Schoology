@@ -135,14 +135,16 @@ public class Entrega {
      * Método para guardar datos.
      * @param ent
      */
-    public void guardar(Entrega ent) {
+    public boolean guardar(Entrega ent) {
         try {
             Session sesion = HibernateUtils.getSessionFactory().openSession();
             Transaction transaction = sesion.beginTransaction();
             sesion.save(ent);
             transaction.commit();
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
         }
     }
 }
