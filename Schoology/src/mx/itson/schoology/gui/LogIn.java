@@ -172,7 +172,9 @@ public class LogIn extends javax.swing.JFrame {
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
         // TODO add your handling code here:
-        txtEmail.setText("Correo Electronico");
+        if (txtEmail.getText().equals("")) {
+            txtEmail.setText("Correo Electronico");
+        }
     }//GEN-LAST:event_txtEmailFocusLost
 
     private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
@@ -182,6 +184,9 @@ public class LogIn extends javax.swing.JFrame {
 
     private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
         // TODO add your handling code here:
+        if (txtPass.getText().equals("")) {
+            txtPass.setText("Contraseña");
+        }
         txtPass.setText("sielamorsecae");
     }//GEN-LAST:event_txtPassFocusLost
 
@@ -196,13 +201,13 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        if (mt.IniciarSesion(txtEmail, txtPass)) {
-            InicioInterfaz ii = new InicioInterfaz();
-            mt.Trancision(this,ii);
-        }else{
-            JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos.");
-        }
 
+        if (mt.IniciarSesion(txtEmail, txtPass)) {
+            dispose();
+        } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");   
+            } 
+ 
     }//GEN-LAST:event_jLabel2MouseClicked
 
     /**

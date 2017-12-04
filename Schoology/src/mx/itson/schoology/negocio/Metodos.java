@@ -11,6 +11,7 @@ import mx.itson.schoology.entidades.Usuario;
 import mx.itson.schoology.enumeradores.Estado;
 import mx.itson.schoology.enumeradores.Evaluacion;
 import mx.itson.schoology.enumeradores.Nota;
+import mx.itson.schoology.gui.InicioInterfaz;
 
 /**
  * Esta clase se encuentran todos los metodos utilizados para darle
@@ -93,11 +94,20 @@ public class Metodos {
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getCorreo().equals(usuario.getText()) &&
                 usuarios.get(i).getContrasena().equals(contrasena.getText())) {
+                Usuario u2 = new Usuario();
+                u2.setId(usuarios.get(i).getId());
+                u2.setNombre(usuarios.get(i).getNombre());
+                u2.setApellido(usuarios.get(i).getApellido());
+                u2.setTelefono(usuarios.get(i).getTelefono());
+                u2.setCorreo(usuarios.get(i).getCorreo());
+                u2.setContrasena(usuarios.get(i).getContrasena());
+                
+                InicioInterfaz ii = new InicioInterfaz(u2);
+                ii.setVisible(true);
                 return true;
-            }
+            }            
         }
-        
-         return false;
+        return false;
     }
     
     public String GenerarCodigo(){
@@ -116,6 +126,5 @@ public class Metodos {
         }
         return codigo;
     }
-            
     
 }

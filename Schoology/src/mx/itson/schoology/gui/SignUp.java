@@ -97,6 +97,11 @@ public class SignUp extends javax.swing.JFrame {
                 txtNombreFocusLost(evt);
             }
         });
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
 
         txtApellido.setText("Apellido");
         txtApellido.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -178,8 +183,10 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailFocusGained
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        // TODO add your handling code here:
-        txtEmail.setText("Correo Electronico");
+
+        if (txtEmail.getText().equals("")) {
+            txtEmail.setText("Correo Electronico");
+        }
     }//GEN-LAST:event_txtEmailFocusLost
 
     private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
@@ -189,7 +196,9 @@ public class SignUp extends javax.swing.JFrame {
 
     private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
         // TODO add your handling code here:
-        txtPass.setText("sielamorsecae");
+        if (txtPass.getText().equals("")) {
+            txtPass.setText("Contraseña");
+        }
     }//GEN-LAST:event_txtPassFocusLost
 
     private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
@@ -198,8 +207,10 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreFocusGained
 
     private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
-        // TODO add your handling code here:
-        txtNombre.setText("Nombre(s)");
+
+        if (txtNombre.getText().equals("")) {
+            txtNombre.setText("Nombre");
+        }
     }//GEN-LAST:event_txtNombreFocusLost
 
     private void txtApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusGained
@@ -208,8 +219,10 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoFocusGained
 
     private void txtApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusLost
-        // TODO add your handling code here:
-        txtApellido.setText("Apellido(s)");
+
+        if (txtApellido.getText().equals("")) {
+            txtApellido.setText("Apellido(s)");
+        }
     }//GEN-LAST:event_txtApellidoFocusLost
 
     private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
@@ -218,8 +231,10 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefonoFocusGained
 
     private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
-        // TODO add your handling code here:
-        txtTelefono.setText("Telefono");
+
+        if (txtTelefono.getText().equals("")) {
+            txtTelefono.setText("Teléfono");
+        }
     }//GEN-LAST:event_txtTelefonoFocusLost
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -234,6 +249,10 @@ public class SignUp extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,13 @@
  */
 package mx.itson.schoology.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import mx.itson.schoology.entidades.Curso;
+import mx.itson.schoology.entidades.Usuario;
+import mx.itson.schoology.negocio.Metodos;
+
 /**
  * JFrame del Inicio.
  * @author JoseLuisChito
@@ -13,12 +20,21 @@ package mx.itson.schoology.gui;
  * @author VivianMunguia
  */
 public class InicioInterfaz extends javax.swing.JFrame {
-
+    Usuario u = new Usuario();
+    Metodos m = new Metodos();
     /**
      * Creates new form InicioInterfaz
      */
     public InicioInterfaz() {
         initComponents();
+    }
+    public InicioInterfaz(Usuario u) {
+        initComponents();
+        this.u = u;
+        System.out.println(u.getId());
+        System.out.println(u.getNombre());
+        txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
+        
     }
 
     /**
@@ -34,6 +50,9 @@ public class InicioInterfaz extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
+        btnCerrarSesion = new javax.swing.JButton();
+        btnCrearCurso = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,11 +69,32 @@ public class InicioInterfaz extends javax.swing.JFrame {
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
         txtUsuario.setText("USUARIO");
 
+        btnCerrarSesion.setText("Cerrar Sesión");
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+
+        btnCrearCurso.setText("Crear Curso");
+        btnCrearCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearCursoActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Ingresar Código");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(35, 35, 35)
@@ -62,6 +102,17 @@ public class InicioInterfaz extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(294, 294, 294)
+                        .addComponent(btnCrearCurso))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(btnCerrarSesion))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,7 +124,13 @@ public class InicioInterfaz extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addGap(117, 117, 117)
+                .addComponent(btnCrearCurso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(135, 135, 135)
+                .addComponent(btnCerrarSesion)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -89,6 +146,27 @@ public class InicioInterfaz extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        LogIn li = new LogIn();
+        li.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+    private void btnCrearCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCursoActionPerformed
+        String nombreCurso = JOptionPane.showInputDialog(null, "Escriba el nombre del curso");
+        Curso curso = new Curso();
+        curso.setNombre(nombreCurso);
+        curso.setCodigo(m.GenerarCodigo());
+        List <Usuario> miembros = new ArrayList<>();
+        miembros.add(u);
+        curso.setMiembros(miembros);
+        curso.guardar(curso);
+    }//GEN-LAST:event_btnCrearCursoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //String codigoIngresado = JOptionPane.showInputDialog(null, "Ingrese el código");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +205,9 @@ public class InicioInterfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnCrearCurso;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
