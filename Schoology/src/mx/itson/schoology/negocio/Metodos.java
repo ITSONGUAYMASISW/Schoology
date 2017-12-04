@@ -92,7 +92,7 @@ public class Metodos {
         
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getCorreo().equals(usuario.getText()) &&
-                usuarios.get(i).getContrasena().equals(contrasena.toString())) {
+                usuarios.get(i).getContrasena().equals(contrasena.getText())) {
                 return true;
             }
         }
