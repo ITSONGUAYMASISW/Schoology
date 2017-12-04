@@ -239,7 +239,7 @@ public class SignUp extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         if (mt.RegistrarUsuario(txtNombre.getText(), txtApellido.getText(), 
-                            txtEmail.getText(), txtPass.getText(), 
+            txtEmail.getText(), txtPass.getText(), 
                             txtTelefono.getText())) {
             txtNombre.setText(""); 
             txtApellido.setText("");

@@ -127,4 +127,18 @@ public class Metodos {
         return codigo;
     }
     
+    public boolean AgregarMiembro(String codigo, Usuario usuario){
+        
+        Curso c = new Curso();
+        List <Curso> cursos = c.obtenerTodos();
+        for (int i = 0; i < cursos.size(); i++) {
+            if (cursos.get(i).getCodigo().equals(codigo)) {
+                cursos.get(i).getMiembros().add(usuario);
+                return c.guardar(cursos.get(i));
+                
+            }
+        }
+        return false;
+    }
+
 }

@@ -52,7 +52,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JLabel();
         btnCerrarSesion = new javax.swing.JButton();
         btnCrearCurso = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnIngresarCodigo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,10 +83,10 @@ public class InicioInterfaz extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Ingresar Código");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresarCodigo.setText("Ingresar Código");
+        btnIngresarCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIngresarCodigoActionPerformed(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(btnIngresarCodigo)
                             .addComponent(btnCerrarSesion))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -127,7 +127,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 .addGap(117, 117, 117)
                 .addComponent(btnCrearCurso)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnIngresarCodigo)
                 .addGap(135, 135, 135)
                 .addComponent(btnCerrarSesion)
                 .addGap(36, 36, 36))
@@ -164,9 +164,10 @@ public class InicioInterfaz extends javax.swing.JFrame {
         curso.guardar(curso);
     }//GEN-LAST:event_btnCrearCursoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //String codigoIngresado = JOptionPane.showInputDialog(null, "Ingrese el código");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnIngresarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarCodigoActionPerformed
+        String codigoIngresado = JOptionPane.showInputDialog(null, "Ingrese el código");
+        m.AgregarMiembro(codigoIngresado, u);
+    }//GEN-LAST:event_btnIngresarCodigoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,7 +208,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnCrearCurso;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIngresarCodigo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
