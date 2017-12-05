@@ -119,11 +119,13 @@ public class InicioInterfaz extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 710, 40));
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Cursos Administrados"));
         jPanel3.setLayout(new java.awt.GridLayout(5, 1));
         jScrollPane1.setViewportView(jPanel3);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 360, 360));
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Cursos Inscritos"));
         jPanel4.setLayout(new java.awt.GridLayout(5, 1));
         jScrollPane2.setViewportView(jPanel4);
 

@@ -4,6 +4,7 @@ package mx.itson.schoology.negocio;
 import java.awt.event.ActionEvent;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import mx.itson.schoology.entidades.Actividad;
 import mx.itson.schoology.entidades.Calificacion;
 import mx.itson.schoology.entidades.Curso;
@@ -14,6 +15,7 @@ import mx.itson.schoology.enumeradores.Estado;
 import mx.itson.schoology.enumeradores.Evaluacion;
 import mx.itson.schoology.enumeradores.Nota;
 import mx.itson.schoology.gui.InicioInterfaz;
+import mx.itson.schoology.gui.VistaMaestro;
 
 /**
  * Esta clase se encuentran todos los metodos utilizados para darle
@@ -153,12 +155,18 @@ public class Metodos {
         for (int i = 0; i < cursos.size(); i++) {
             
             if (cursos.get(i).getAdministrador().getId() == u.getId()) {
-                
+        
             JButton boton = new JButton();
             String nombre = cursos.get(i).getId() + " " + cursos.get(i).getNombre();
              boton.setText(nombre);
+             String nombreas = cursos.get(i).getNombre();
+             Curso cm = cursos.get(i);
             boton.addActionListener((ActionEvent e) -> {
-                
+            
+            VistaMaestro vm = new VistaMaestro(u,cm);
+            vm.setVisible(true);
+            
+            vm.lblNombreCurso.setText(nombreas);
                
                 
             });
@@ -171,6 +179,7 @@ public class Metodos {
         }
         
     }
+      
       public void crearInscritos(JPanel panel, Usuario u){
         
         CursoUsuario cu = new CursoUsuario();
@@ -201,4 +210,25 @@ public class Metodos {
         
     }
 
+      public void llenarTablaMiembros(Curso c, DefaultTableModel modelo){
+          CursoUsuario cu = new CursoUsuario();
+          List<CursoUsuario> miembros = cu.obtenerTodos();
+          String [] datos = new String[4];
+          for (int i = 0; i < miembros.size(); i++) {
+              
+              if (miembros.get(i).getCurso().getId()==c.getId()) {
+                  
+                   datos[0] = miembros.get(i).getUsuario().getNombre();
+                   datos[1] = miembros.get(i).getUsuario().getApellido();
+                   datos[2] = miembros.get(i).getUsuario().getCorreo();
+                   datos[3] = miembros.get(i).getUsuario().getTelefono();
+                  
+                   modelo.addRow(datos);
+                  
+              }
+              
+          }
+          
+      }
+      
 }
