@@ -50,88 +50,68 @@ public class InicioInterfaz extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
-        btnCerrarSesion = new javax.swing.JButton();
-        btnCrearCurso = new javax.swing.JButton();
-        btnIngresarCodigo = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        lblCrearCurso = new javax.swing.JLabel();
+        lblIngresarCodigo = new javax.swing.JLabel();
+        lblCerrarSesion = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("BIENVENIDO/A");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/schoology/imagenes/logoschoool.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
         txtUsuario.setText("USUARIO");
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 317, 53));
 
-        btnCerrarSesion.setText("Cerrar Sesión");
-        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSesionActionPerformed(evt);
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblCrearCurso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblCrearCurso.setForeground(new java.awt.Color(204, 204, 204));
+        lblCrearCurso.setText("Crear curso");
+        lblCrearCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCrearCursoMouseClicked(evt);
             }
         });
+        jPanel2.add(lblCrearCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 97, 40));
 
-        btnCrearCurso.setText("Crear Curso");
-        btnCrearCurso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearCursoActionPerformed(evt);
+        lblIngresarCodigo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblIngresarCodigo.setForeground(new java.awt.Color(204, 204, 204));
+        lblIngresarCodigo.setText("Registrarse en un curso");
+        lblIngresarCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIngresarCodigoMouseClicked(evt);
             }
         });
+        jPanel2.add(lblIngresarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, 40));
 
-        btnIngresarCodigo.setText("Ingresar Código");
-        btnIngresarCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarCodigoActionPerformed(evt);
+        lblCerrarSesion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblCerrarSesion.setForeground(new java.awt.Color(204, 204, 204));
+        lblCerrarSesion.setText("Cerrar sesión");
+        lblCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCerrarSesionMouseClicked(evt);
             }
         });
+        jPanel2.add(lblCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, -1, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(294, 294, 294)
-                        .addComponent(btnCrearCurso))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnIngresarCodigo)
-                            .addComponent(btnCerrarSesion))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
-                .addGap(117, 117, 117)
-                .addComponent(btnCrearCurso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(btnIngresarCodigo)
-                .addGap(135, 135, 135)
-                .addComponent(btnCerrarSesion)
-                .addGap(36, 36, 36))
-        );
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 710, 40));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 360, 360));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 350, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,13 +127,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        LogIn li = new LogIn();
-        li.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnCerrarSesionActionPerformed
-
-    private void btnCrearCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCursoActionPerformed
+    private void lblCrearCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearCursoMouseClicked
         String nombreCurso = JOptionPane.showInputDialog(null, "Escriba el nombre del curso");
         Curso curso = new Curso();
         curso.setNombre(nombreCurso);
@@ -162,12 +136,18 @@ public class InicioInterfaz extends javax.swing.JFrame {
         miembros.add(u);
         curso.setMiembros(miembros);
         curso.guardar(curso);
-    }//GEN-LAST:event_btnCrearCursoActionPerformed
+    }//GEN-LAST:event_lblCrearCursoMouseClicked
 
-    private void btnIngresarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarCodigoActionPerformed
+    private void lblIngresarCodigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIngresarCodigoMouseClicked
         String codigoIngresado = JOptionPane.showInputDialog(null, "Ingrese el código");
         m.AgregarMiembro(codigoIngresado, u);
-    }//GEN-LAST:event_btnIngresarCodigoActionPerformed
+    }//GEN-LAST:event_lblIngresarCodigoMouseClicked
+
+    private void lblCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesionMouseClicked
+        LogIn li = new LogIn();
+        li.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblCerrarSesionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -206,12 +186,15 @@ public class InicioInterfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnCrearCurso;
-    private javax.swing.JButton btnIngresarCodigo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblCerrarSesion;
+    private javax.swing.JLabel lblCrearCurso;
+    private javax.swing.JLabel lblIngresarCodigo;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
