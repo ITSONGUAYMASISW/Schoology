@@ -23,14 +23,13 @@ import mx.itson.schoology.negocio.Metodos;
 public class InicioInterfaz extends javax.swing.JFrame {
     Usuario u = new Usuario();
     Metodos m = new Metodos();
-    List<JButton> botones;
-    List<Curso> propios;
-    List<Curso> inscritos;
     /**
      * Creates new form InicioInterfaz
      */
     public InicioInterfaz() {
         initComponents();
+        txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
+        m.crearInscritos(jPanel3, u);
     }
     public InicioInterfaz(Usuario u) {
         initComponents();
@@ -38,7 +37,8 @@ public class InicioInterfaz extends javax.swing.JFrame {
         System.out.println(u.getId());
         System.out.println(u.getNombre());
         txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
-        
+        m.crearInscritos(jPanel3, u);
+
     }
 
     /**
@@ -59,7 +59,9 @@ public class InicioInterfaz extends javax.swing.JFrame {
         lblIngresarCodigo = new javax.swing.JLabel();
         lblCerrarSesion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,7 +116,15 @@ public class InicioInterfaz extends javax.swing.JFrame {
         jPanel2.add(lblCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, -1, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 710, 40));
+
+        jPanel3.setLayout(new java.awt.GridLayout(5, 1));
+        jScrollPane1.setViewportView(jPanel3);
+
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 360, 360));
+
+        jPanel4.setLayout(new java.awt.GridLayout(5, 1));
+        jScrollPane2.setViewportView(jPanel4);
+
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 350, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,6 +204,8 @@ public class InicioInterfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCerrarSesion;

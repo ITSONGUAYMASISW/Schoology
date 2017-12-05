@@ -1,6 +1,7 @@
 
 package mx.itson.schoology.negocio;
 
+import java.awt.event.ActionEvent;
 import java.util.*;
 import javax.swing.*;
 import mx.itson.schoology.entidades.Actividad;
@@ -143,15 +144,32 @@ public class Metodos {
         }
         return false;
     }
-//    
-//    public boolean crearInscritos(JPanel panel){
-//    
-//        List<JButton> botones;
-//        List<Curso> inscritos;
-//        
-//        
-//    
-//        return
-//    }
+
+      public void crearInscritos(JPanel panel, Usuario u){
+        
+        Curso c = new Curso();
+        List<Curso> cursos = c.obtenerTodos();
+        
+        for (int i = 0; i < cursos.size(); i++) {
+            
+            if (cursos.get(i).getAdministrador().getId() == u.getId()) {
+                
+            JButton boton = new JButton();
+            String nombre = cursos.get(i).getId() + " " + cursos.get(i).getNombre();
+             boton.setText(nombre);
+            boton.addActionListener((ActionEvent e) -> {
+                
+               
+                
+            });
+            panel.add(boton);
+            panel.updateUI();
+       
+                
+            }
+            
+        }
+        
+    }
 
 }
