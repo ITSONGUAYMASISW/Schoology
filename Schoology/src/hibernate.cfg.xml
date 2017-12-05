@@ -18,7 +18,7 @@
       root
    </property>
    <property name="hibernate.connection.password">
-      fcoquijadacruz
+      Tangamandapio
    </property>
    <mapping class="mx.itson.schoology.entidades.Actividad"/>
    <mapping class="mx.itson.schoology.entidades.Calificacion"/>

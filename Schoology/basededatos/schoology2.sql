@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: schoology
 -- ------------------------------------------------------
--- Server version	5.6.26-log
+-- Server version	5.7.19-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -43,7 +43,6 @@ CREATE TABLE `actividad` (
 
 LOCK TABLES `actividad` WRITE;
 /*!40000 ALTER TABLE `actividad` DISABLE KEYS */;
-INSERT INTO `actividad` VALUES (1,'Actividad','Actividad','2017-12-02 20:18:38','2017-12-02 20:18:38',NULL,'NUMERICA'),(3,'Actividad','Actividad','2017-12-02 20:32:06','2017-12-02 20:32:06',NULL,'NUMERICA'),(4,'Actividad','Actividad','2017-12-02 20:34:36','2017-12-02 20:34:36',NULL,'NUMERICA'),(5,'Actividad','Actividad','2017-12-02 20:43:16','2017-12-02 20:43:16',NULL,'NUMERICA'),(6,'Actividad','Actividad','2017-12-02 20:44:50','2017-12-02 20:44:50',NULL,'NUMERICA'),(7,'Actividad','Actividad','2017-12-02 21:26:48','2017-12-02 21:26:48',2,'NUMERICA'),(8,NULL,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL,NULL,NULL),(13,NULL,NULL,NULL,NULL,NULL,NULL),(14,NULL,NULL,NULL,NULL,NULL,NULL),(15,NULL,NULL,NULL,NULL,NULL,NULL),(16,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `actividad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,8 +87,11 @@ CREATE TABLE `curso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(45) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `idUsuario` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_curso_usuario_idx` (`idUsuario`),
+  CONSTRAINT `fk_curs_usuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +100,7 @@ CREATE TABLE `curso` (
 
 LOCK TABLES `curso` WRITE;
 /*!40000 ALTER TABLE `curso` DISABLE KEYS */;
-INSERT INTO `curso` VALUES (1,'8286-0116',NULL),(2,'2502-9240',NULL),(4,'1558-3979',NULL);
+INSERT INTO `curso` VALUES (12,'5025-9214','base de chitos 2',16);
 /*!40000 ALTER TABLE `curso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +120,7 @@ CREATE TABLE `cursousuario` (
   KEY `FK_idUsuario_idx` (`idUsuario`),
   CONSTRAINT `FK_idCurso` FOREIGN KEY (`idCurso`) REFERENCES `curso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +129,6 @@ CREATE TABLE `cursousuario` (
 
 LOCK TABLES `cursousuario` WRITE;
 /*!40000 ALTER TABLE `cursousuario` DISABLE KEYS */;
-INSERT INTO `cursousuario` VALUES (1,1,3),(2,1,4),(3,2,5),(4,2,6),(5,4,9),(6,4,10);
 /*!40000 ALTER TABLE `cursousuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +161,6 @@ CREATE TABLE `entrega` (
 
 LOCK TABLES `entrega` WRITE;
 /*!40000 ALTER TABLE `entrega` DISABLE KEYS */;
-INSERT INTO `entrega` VALUES (1,'url','hejwfhjew','2017-12-02 21:38:03',NULL,NULL),(2,'url','hejwfhjew','2017-12-02 21:45:21',2,11),(3,'url','hejwfhjew','2017-12-02 21:56:02',2,13),(4,'C://direccion','hejwfhjew','2017-12-02 21:59:21',2,15);
 /*!40000 ALTER TABLE `entrega` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +179,7 @@ CREATE TABLE `usuario` (
   `telefono` varchar(45) DEFAULT NULL,
   `contrasena` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,9 +188,17 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (2,'Juan','Pérez','juan@hotmail.com','1234567','contraseña'),(3,'Juan','Pérez','juan@hotmail.com','1234567','contraseña'),(4,'Luis','García','luis@hotmail.com','647337','constraseña2'),(5,'Juan','Pérez','juan@hotmail.com','1234567','contraseña'),(6,'Luis','García','luis@hotmail.com','647337','constraseña2'),(9,'Juan','Pérez','juan@hotmail.com','1234567','contraseña'),(10,'Luis','García','luis@hotmail.com','647337','constraseña2'),(11,'Juan','Pérez','juan@hotmail.com','1234567','contraseña');
+INSERT INTO `usuario` VALUES (16,'pepe','problemas','pepe@gmail.com','622222222222','123'),(17,'papu','chito','papu@gmail.com','62233333333','123');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'schoology'
+--
+
+--
+-- Dumping routines for database 'schoology'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -201,4 +209,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-02 22:40:11
+-- Dump completed on 2017-12-05  9:47:04

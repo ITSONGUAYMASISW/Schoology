@@ -179,19 +179,11 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblCrearCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearCursoMouseClicked
-        String nombreCurso = JOptionPane.showInputDialog(null, "Escriba el nombre del curso");
-        Curso curso = new Curso();
-        curso.setNombre(nombreCurso);
-        curso.setCodigo(m.GenerarCodigo());
-        List <Usuario> miembros = new ArrayList<>();
-        miembros.add(u);
-        curso.setAdministrador(u);
-        curso.guardar(curso);
+
     }//GEN-LAST:event_lblCrearCursoMouseClicked
 
     private void lblNombreCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreCursoMouseClicked
-        String codigoIngresado = JOptionPane.showInputDialog(null, "Ingrese el código");
-        m.AgregarMiembro(codigoIngresado, u);
+
     }//GEN-LAST:event_lblNombreCursoMouseClicked
 
     private void lblCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesionMouseClicked
