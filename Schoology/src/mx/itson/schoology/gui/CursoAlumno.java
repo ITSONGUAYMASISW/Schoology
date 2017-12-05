@@ -5,17 +5,25 @@
  */
 package mx.itson.schoology.gui;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Francisco
  */
 public class CursoAlumno extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form CursoAlumno
      */
     public CursoAlumno() {
         initComponents();
+        
+        DefaultTableModel model = new DefaultTableModel();
+        String[] titulos = {"Actividad", "Curso"};
+        tblActividades.setModel(model);
+        model.setColumnIdentifiers(titulos);
     }
 
     /**
@@ -33,9 +41,10 @@ public class CursoAlumno extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblCerrarSesion = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblTareas = new javax.swing.JTable();
+        lblCurso = new javax.swing.JLabel();
         btnMostrar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblActividades = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,23 +78,30 @@ public class CursoAlumno extends javax.swing.JFrame {
         });
         jPanel2.add(lblCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, -1, 40));
 
+        lblCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCurso.setText("Nombre Curso");
+        jPanel2.add(lblCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 180, 40));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 710, 40));
-
-        tblTareas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Curso", "Tarea"
-            }
-        ));
-        jScrollPane1.setViewportView(tblTareas);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 540, 190));
 
         btnMostrar.setBackground(new java.awt.Color(0, 102, 153));
         btnMostrar.setText("Mostrar");
         jPanel1.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 90, -1));
+
+        tblActividades.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblActividades);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 420, 240));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,7 +111,7 @@ public class CursoAlumno extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
         );
 
         pack();
@@ -150,7 +166,8 @@ public class CursoAlumno extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCerrarSesion;
-    private javax.swing.JTable tblTareas;
+    private javax.swing.JLabel lblCurso;
+    public javax.swing.JTable tblActividades;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
