@@ -145,7 +145,7 @@ public class Metodos {
         return false;
     }
 
-      public void crearInscritos(JPanel panel, Usuario u){
+      public void crearAdministrados(JPanel panel, Usuario u){
         
         Curso c = new Curso();
         List<Curso> cursos = c.obtenerTodos();
@@ -156,6 +156,35 @@ public class Metodos {
                 
             JButton boton = new JButton();
             String nombre = cursos.get(i).getId() + " " + cursos.get(i).getNombre();
+             boton.setText(nombre);
+            boton.addActionListener((ActionEvent e) -> {
+                
+               
+                
+            });
+            panel.add(boton);
+            panel.updateUI();
+       
+                
+            }
+            
+        }
+        
+    }
+      public void crearInscritos(JPanel panel, Usuario u){
+        
+        CursoUsuario cu = new CursoUsuario();
+        List<CursoUsuario> inscritos = cu.obtenerTodos();
+        Curso c = new Curso();
+        List<Curso> cursos = c.obtenerTodos();
+        
+        for (int i = 0; i < inscritos.size(); i++) {
+            
+            if (inscritos.get(i).getUsuario().getId() == u.getId()) {
+                
+            JButton boton = new JButton();
+            String nombre = inscritos.get(i).getCurso().getId() + " " 
+                    + inscritos.get(i).getCurso().getNombre();
              boton.setText(nombre);
             boton.addActionListener((ActionEvent e) -> {
                 

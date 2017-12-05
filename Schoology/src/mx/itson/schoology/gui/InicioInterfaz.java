@@ -28,8 +28,8 @@ public class InicioInterfaz extends javax.swing.JFrame {
      */
     public InicioInterfaz() {
         initComponents();
-        txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
-        m.crearInscritos(jPanel3, u);
+
+      
     }
     public InicioInterfaz(Usuario u) {
         initComponents();
@@ -37,7 +37,9 @@ public class InicioInterfaz extends javax.swing.JFrame {
         System.out.println(u.getId());
         System.out.println(u.getNombre());
         txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
-        m.crearInscritos(jPanel3, u);
+        m.crearAdministrados(jPanel3, u);
+        
+        m.crearInscritos(jPanel4, u);
 
     }
 
