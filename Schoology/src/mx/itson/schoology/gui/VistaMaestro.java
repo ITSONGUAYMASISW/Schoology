@@ -29,7 +29,7 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
 
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        lblCrearCurso = new javax.swing.JLabel();
+        lblAgregarActividad = new javax.swing.JLabel();
         lblNombreCurso = new javax.swing.JLabel();
         lblCerrarSesion = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -48,19 +48,19 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCrearCurso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblCrearCurso.setForeground(new java.awt.Color(204, 204, 204));
-        lblCrearCurso.setText("Agregar actividad");
-        lblCrearCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblAgregarActividad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblAgregarActividad.setForeground(new java.awt.Color(204, 204, 204));
+        lblAgregarActividad.setText("Agregar actividad");
+        lblAgregarActividad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCrearCursoMouseClicked(evt);
+                lblAgregarActividadMouseClicked(evt);
             }
         });
-        jPanel2.add(lblCrearCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 100, 40));
+        jPanel2.add(lblAgregarActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 100, 40));
 
         lblNombreCurso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblNombreCurso.setForeground(new java.awt.Color(204, 204, 204));
-        lblNombreCurso.setText("Registrarse en un curso");
+        lblNombreCurso.setText("Nombre del curso");
         lblNombreCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNombreCursoMouseClicked(evt);
@@ -178,9 +178,9 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblCrearCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearCursoMouseClicked
+    private void lblAgregarActividadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAgregarActividadMouseClicked
 
-    }//GEN-LAST:event_lblCrearCursoMouseClicked
+    }//GEN-LAST:event_lblAgregarActividadMouseClicked
 
     private void lblNombreCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreCursoMouseClicked
 
@@ -225,14 +225,14 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel2;
+    public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblAgregarActividad;
     private javax.swing.JLabel lblCerrarSesion;
-    private javax.swing.JLabel lblCrearCurso;
     private javax.swing.JLabel lblNombreCurso;
     private javax.swing.JTable tblMiembros;
     private javax.swing.JTable tblTareasEntregadas;
