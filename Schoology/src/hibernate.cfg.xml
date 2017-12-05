@@ -25,5 +25,7 @@
    <mapping class="mx.itson.schoology.entidades.Curso"/>
    <mapping class="mx.itson.schoology.entidades.Entrega"/>
    <mapping class="mx.itson.schoology.entidades.Usuario"/>
+   <mapping class="mx.itson.schoology.entidades.CursoUsuario"/>
+   
 </session-factory>
 </hibernate-configuration>

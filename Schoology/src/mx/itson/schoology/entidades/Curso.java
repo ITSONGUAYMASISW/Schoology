@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import mx.itson.schoology.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -25,8 +26,8 @@ public class Curso{
     private int id;
     private String codigo;
     private String nombre;
-    private List<Usuario> miembros;
-
+    private Usuario administrador;
+    
     /**
      * @return the id
      */
@@ -72,22 +73,6 @@ public class Curso{
     }
 
     /**
-     * @return the miembros
-     */
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="cursousuario", joinColumns={@JoinColumn(name="IdCurso")}, inverseJoinColumns={@JoinColumn(name="IdUsuario")}) 
-    public List<Usuario> getMiembros() {
-        return miembros;
-    }
-
-    /**
-     * @param miembros the miembros to set
-     */
-    public void setMiembros(List<Usuario> miembros) {
-        this.miembros = miembros;
-    }
-
-    /**
      * Método para obtener datos.
      * @return Devuelve cursos.
      */
@@ -114,4 +99,24 @@ public class Curso{
             return false;
         }
     }
+
+    /**
+     * @return the administrador
+     */
+    @OneToOne(cascade=CascadeType.ALL)  
+    @JoinColumn (name="idUsuario")
+    public Usuario getAdministrador() {
+        return administrador;
+    }
+
+    /**
+     * @param administrador the administrador to set
+     */
+    public void setAdministrador(Usuario administrador) {
+        this.administrador = administrador;
+    }
+
+
+
+
 }

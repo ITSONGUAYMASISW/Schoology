@@ -7,6 +7,7 @@ package mx.itson.schoology.gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;
@@ -22,6 +23,9 @@ import mx.itson.schoology.negocio.Metodos;
 public class InicioInterfaz extends javax.swing.JFrame {
     Usuario u = new Usuario();
     Metodos m = new Metodos();
+    List<JButton> botones;
+    List<Curso> propios;
+    List<Curso> inscritos;
     /**
      * Creates new form InicioInterfaz
      */
@@ -134,7 +138,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
         curso.setCodigo(m.GenerarCodigo());
         List <Usuario> miembros = new ArrayList<>();
         miembros.add(u);
-        curso.setMiembros(miembros);
+        curso.setAdministrador(u);
         curso.guardar(curso);
     }//GEN-LAST:event_lblCrearCursoMouseClicked
 

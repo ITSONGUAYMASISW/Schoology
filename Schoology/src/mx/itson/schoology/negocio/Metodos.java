@@ -6,6 +6,7 @@ import javax.swing.*;
 import mx.itson.schoology.entidades.Actividad;
 import mx.itson.schoology.entidades.Calificacion;
 import mx.itson.schoology.entidades.Curso;
+import mx.itson.schoology.entidades.CursoUsuario;
 import mx.itson.schoology.entidades.Entrega;
 import mx.itson.schoology.entidades.Usuario;
 import mx.itson.schoology.enumeradores.Estado;
@@ -47,7 +48,7 @@ public class Metodos {
         usuarios.add(usuario);
         curso.setNombre(name);
         curso.setCodigo(GenerarCodigo());
-        curso.setMiembros(usuarios);
+        curso.setAdministrador(usuario);
         
         return curso.guardar(curso);
     }
@@ -130,15 +131,27 @@ public class Metodos {
     public boolean AgregarMiembro(String codigo, Usuario usuario){
         
         Curso c = new Curso();
+        CursoUsuario cu = new CursoUsuario();
         List <Curso> cursos = c.obtenerTodos();
         for (int i = 0; i < cursos.size(); i++) {
             if (cursos.get(i).getCodigo().equals(codigo)) {
-                cursos.get(i).getMiembros().add(usuario);
-                return c.guardar(cursos.get(i));
+                cu.setCurso(cursos.get(i));
+                cu.setUsuario(usuario);
+                return cu.guardar(cu);
                 
             }
         }
         return false;
     }
+//    
+//    public boolean crearInscritos(JPanel panel){
+//    
+//        List<JButton> botones;
+//        List<Curso> inscritos;
+//        
+//        
+//    
+//        return
+//    }
 
 }
