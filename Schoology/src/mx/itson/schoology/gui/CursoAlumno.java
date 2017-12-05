@@ -21,9 +21,13 @@ public class CursoAlumno extends javax.swing.JFrame {
         initComponents();
         
         DefaultTableModel model = new DefaultTableModel();
-        String[] titulos = {"Actividad", "Curso"};
+        String[] titulos = {"Actividad", "Nombre", "Publicación","Vencimiento"
+       ,"Evaluación"};
         tblActividades.setModel(model);
         model.setColumnIdentifiers(titulos);
+        
+        
+        
     }
 
     /**
