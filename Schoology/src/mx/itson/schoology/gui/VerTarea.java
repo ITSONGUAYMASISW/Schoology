@@ -5,11 +5,15 @@
  */
 package mx.itson.schoology.gui;
 
+import mx.itson.schoology.entidades.Usuario;
+
 /**
  *
  * @author Francisco
  */
 public class VerTarea extends javax.swing.JFrame {
+
+    private Usuario u;
 
     /**
      * Creates new form VerTarea
@@ -17,7 +21,15 @@ public class VerTarea extends javax.swing.JFrame {
     public VerTarea() {
         initComponents();
     }
-
+    
+    public VerTarea(Usuario u) {
+        initComponents();
+        this.u = u;
+        System.out.println(u.getId());
+        System.out.println(u.getNombre());
+        txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -6,12 +6,15 @@
 package mx.itson.schoology.gui;
 
 import javax.swing.table.DefaultTableModel;
+import mx.itson.schoology.entidades.Usuario;
 
 /**
  *
  * @author Francisco
  */
 public class CursoAlumno extends javax.swing.JFrame {
+
+    private Usuario u;
     
 
     /**
@@ -24,9 +27,15 @@ public class CursoAlumno extends javax.swing.JFrame {
         String[] titulos = {"Actividad", "Nombre", "Publicación","Vencimiento"
        ,"Evaluación"};
         tblActividades.setModel(model);
-        model.setColumnIdentifiers(titulos);
-        
-        
+        model.setColumnIdentifiers(titulos);    
+    }
+    
+    public CursoAlumno(Usuario u) {
+        initComponents();
+        this.u = u;
+        System.out.println(u.getId());
+        System.out.println(u.getNombre());
+        txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
         
     }
 

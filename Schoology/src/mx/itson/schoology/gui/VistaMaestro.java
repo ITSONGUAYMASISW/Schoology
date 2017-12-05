@@ -11,6 +11,7 @@ import mx.itson.schoology.entidades.Usuario;
 public class VistaMaestro extends javax.swing.JFrame {
 DefaultTableModel modeloMiembros = new DefaultTableModel();
 DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
+    private Usuario u;
 
     public VistaMaestro() {
         initComponents();
@@ -21,6 +22,15 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
         String titulosTablaTareasEntregadas[] = {"Alumno", "Tarea", "Estado"}; 
         modeloTareasEntregadas = new DefaultTableModel(null, titulosTablaTareasEntregadas);
         tblTareasEntregadas.setModel(modeloMiembros);
+    }
+    
+    public VistaMaestro(Usuario u) {
+        initComponents();
+        this.u = u;
+        System.out.println(u.getId());
+        System.out.println(u.getNombre());
+        txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -38,6 +48,8 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTareasEntregadas = new javax.swing.JTable();
+        txtUsuario = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -175,6 +187,16 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 320, -1));
 
+        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
+        txtUsuario.setText("USUARIO");
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 170, 53));
+
+        jLabel6.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setText("BIENVENIDO/A");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -226,6 +248,7 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel6;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel3;
@@ -236,5 +259,6 @@ DefaultTableModel modeloTareasEntregadas = new DefaultTableModel();
     private javax.swing.JLabel lblNombreCurso;
     private javax.swing.JTable tblMiembros;
     private javax.swing.JTable tblTareasEntregadas;
+    private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
