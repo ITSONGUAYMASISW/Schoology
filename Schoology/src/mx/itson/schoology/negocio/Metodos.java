@@ -57,18 +57,24 @@ public class Metodos {
         return curso.guardar(curso);
     }
     
-    public boolean CrearActividad(String nombre, String descripcion, Date vencimiento, Curso curso, Evaluacion evaluacion){
+    public boolean CrearActividad(String nombre, String descripcion,Date vencimiento, Curso curso, String evaluacion){
         Actividad actividad = new Actividad();
         Date diaPublicacion = new Date();
+        Evaluacion e = null;
         actividad.setNombre(nombre);
         actividad.setDescripcion(descripcion);
         actividad.setPublicacion(diaPublicacion);
         actividad.setVencimiento(vencimiento);
         actividad.setCurso(curso);
-        actividad.setEvaluacion(evaluacion);
-        
-        return actividad.guardar(actividad);
+        if (e.NUMERICA.toString().equals(evaluacion)) {
+            actividad.setEvaluacion(e.NUMERICA);
+        }else if(e.POR_ENTREGA.toString().equals(evaluacion)){
+            actividad.setEvaluacion(e.POR_ENTREGA);
+        }
+        return  actividad.guardar(actividad);
     }
+             
+               
     
     public boolean RealizarEntrega(String archivoAdjunto, String descripcion, Usuario estudiante, Actividad actividad){
         Entrega entrega = new Entrega();

@@ -5,7 +5,10 @@
  */
 package mx.itson.schoology.gui;
 
+import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;
+import mx.itson.schoology.enumeradores.Evaluacion;
+import mx.itson.schoology.negocio.Metodos;
 
 /**
  *
@@ -14,6 +17,8 @@ import mx.itson.schoology.entidades.Usuario;
 public class AgregarTarea extends javax.swing.JFrame {
 
     private Usuario u;
+    Evaluacion e;
+    private Curso c;
 
     /**
      * Creates new form AgregarTarea
@@ -22,13 +27,15 @@ public class AgregarTarea extends javax.swing.JFrame {
         initComponents();
     }
     
-     public AgregarTarea(Usuario u) {
+     public AgregarTarea(Usuario u,Curso c) {
         initComponents();
         this.u = u;
+        this.c = c;
         System.out.println(u.getId());
         System.out.println(u.getNombre());
         txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
-        
+        cbEscala.addItem(e.NUMERICA.toString());
+        cbEscala.addItem(e.POR_ENTREGA.toString());
     }
 
     /**
@@ -96,7 +103,7 @@ public class AgregarTarea extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 166, -1));
 
-        cbEscala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escala de calificación", "0-1", "0-2", "0-3", "0-4", "0-5", "0-6", "0-7", "0-8", "0-9", "0-10" }));
+        cbEscala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metodo de evaluacion" }));
         jPanel1.add(cbEscala, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 166, -1));
 
         jLabel2.setText("Fecha y hora de entrega.");
@@ -106,6 +113,11 @@ public class AgregarTarea extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("CREAR TAREA");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 161, -1));
 
         jLabel8.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
@@ -151,6 +163,11 @@ public class AgregarTarea extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtDescripcion.setText("Descripción");
     }//GEN-LAST:event_txtDescripcionFocusLost
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        Metodos m = new Metodos();
+        m.CrearActividad(txtNombreTarea.getText(), txtDescripcion.getText(), dtFechaVencimiento.getDate(), c, cbEscala.getSelectedItem().toString());
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

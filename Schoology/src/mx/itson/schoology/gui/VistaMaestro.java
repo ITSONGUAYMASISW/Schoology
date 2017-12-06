@@ -225,7 +225,9 @@ DefaultTableModel modeloEntregas;
     }//GEN-LAST:event_lblSalirMouseClicked
 
     private void lblAgregarActividad1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAgregarActividad1MouseClicked
-        // TODO add your handling code here:
+        AgregarTarea at = new AgregarTarea(u,c);
+        at.setVisible(true);
+        dispose();
     }//GEN-LAST:event_lblAgregarActividad1MouseClicked
 
     public static void main(String args[]) {
