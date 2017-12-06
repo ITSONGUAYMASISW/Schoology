@@ -44,7 +44,7 @@ public class CursoAlumno extends javax.swing.JFrame {
         
         lblCurso.setText(c.getNombre());
         
-           String [] datos = new String[4];
+           String [] datos = new String[5];
         
         for (int i = 0; i < actividades.size(); i++) {
             

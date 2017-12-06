@@ -87,7 +87,7 @@ public class AgregarTarea extends javax.swing.JFrame {
                 txtNombreTareaFocusLost(evt);
             }
         });
-        jPanel1.add(txtNombreTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 166, -1));
+        jPanel1.add(txtNombreTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 166, -1));
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -103,13 +103,13 @@ public class AgregarTarea extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(txtDescripcion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 166, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 166, -1));
 
         cbEscala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metodo de evaluacion" }));
-        jPanel1.add(cbEscala, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 166, -1));
+        jPanel1.add(cbEscala, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 166, -1));
 
         jLabel2.setText("Fecha y hora de entrega.");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -120,7 +120,7 @@ public class AgregarTarea extends javax.swing.JFrame {
                 jLabel7MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 161, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 161, -1));
 
         jLabel8.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -132,7 +132,7 @@ public class AgregarTarea extends javax.swing.JFrame {
         txtUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtUsuario.setText("USUARIO");
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 270, 53));
-        jPanel1.add(jfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 170, -1));
+        jPanel1.add(jfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,7 +142,7 @@ public class AgregarTarea extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
 
         pack();
