@@ -7,7 +7,6 @@ package mx.itson.schoology.gui;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;

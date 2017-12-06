@@ -1,17 +1,17 @@
 
 package mx.itson.schoology.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
 import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;
 import mx.itson.schoology.negocio.Metodos;
 
 public class VistaMaestro extends javax.swing.JFrame {
-DefaultTableModel modeloMiembros = new DefaultTableModel();
-DefaultTableModel modeloEntregas = new DefaultTableModel();
+    
+DefaultTableModel modeloMiembros;
+DefaultTableModel modeloEntregas;
+
     private Usuario u;
     private Curso c;
     Metodos mt = new Metodos();
@@ -23,10 +23,13 @@ DefaultTableModel modeloEntregas = new DefaultTableModel();
     
     public VistaMaestro(Usuario u,Curso c) {
         initComponents();
+        modeloMiembros = new DefaultTableModel();
+        modeloEntregas = new DefaultTableModel();
         this.u = u;
         this.c = c;
         System.out.println(u.getId());
         System.out.println(u.getNombre());
+        
         txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
         
         modeloMiembros.addColumn("Nombre");
@@ -36,11 +39,11 @@ DefaultTableModel modeloEntregas = new DefaultTableModel();
         
         tblMiembros.setModel(modeloMiembros);
 
-//        modeloEntregas.addColumn("Alumno");
-//        modeloEntregas.addColumn("Actividad");
-//        modeloEntregas.addColumn("Estado");
-//        
-//       tblEntregas.setModel(modeloEntregas);
+        modeloEntregas.addColumn("Alumno");
+        modeloEntregas.addColumn("Actividad");
+        modeloEntregas.addColumn("Estado");
+        
+       tblEntregas.setModel(modeloEntregas);
        
         mt.llenarTablaMiembros(c, modeloMiembros);
         
@@ -53,9 +56,10 @@ DefaultTableModel modeloEntregas = new DefaultTableModel();
 
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        lblAgregarActividad = new javax.swing.JLabel();
+        lblListaActividades = new javax.swing.JLabel();
         lblNombreCurso = new javax.swing.JLabel();
         lblSalir = new javax.swing.JLabel();
+        lblAgregarActividad1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMiembros = new javax.swing.JTable();
@@ -74,15 +78,15 @@ DefaultTableModel modeloEntregas = new DefaultTableModel();
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAgregarActividad.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblAgregarActividad.setForeground(new java.awt.Color(204, 204, 204));
-        lblAgregarActividad.setText("Agregar actividad");
-        lblAgregarActividad.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblListaActividades.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblListaActividades.setForeground(new java.awt.Color(204, 204, 204));
+        lblListaActividades.setText("Ver lista de actividades");
+        lblListaActividades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAgregarActividadMouseClicked(evt);
+                lblListaActividadesMouseClicked(evt);
             }
         });
-        jPanel2.add(lblAgregarActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 100, 40));
+        jPanel2.add(lblListaActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 140, 40));
 
         lblNombreCurso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblNombreCurso.setForeground(new java.awt.Color(204, 204, 204));
@@ -104,29 +108,31 @@ DefaultTableModel modeloEntregas = new DefaultTableModel();
         });
         jPanel2.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, 40));
 
+        lblAgregarActividad1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblAgregarActividad1.setForeground(new java.awt.Color(204, 204, 204));
+        lblAgregarActividad1.setText("Agregar actividad");
+        lblAgregarActividad1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAgregarActividad1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(lblAgregarActividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 100, 40));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 710, 40));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Miembros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tw Cen MT", 0, 14))); // NOI18N
 
         tblMiembros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Nombre", "Apellido", "Correo", "Teléfono"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(tblMiembros);
         if (tblMiembros.getColumnModel().getColumnCount() > 0) {
             tblMiembros.getColumnModel().getColumn(0).setResizable(false);
@@ -158,23 +164,15 @@ DefaultTableModel modeloEntregas = new DefaultTableModel();
 
         tblEntregas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Alumno", "Tarea", "Estado"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane2.setViewportView(tblEntregas);
         if (tblEntregas.getColumnModel().getColumnCount() > 0) {
             tblEntregas.getColumnModel().getColumn(0).setResizable(false);
@@ -214,9 +212,9 @@ DefaultTableModel modeloEntregas = new DefaultTableModel();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblAgregarActividadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAgregarActividadMouseClicked
+    private void lblListaActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListaActividadesMouseClicked
 
-    }//GEN-LAST:event_lblAgregarActividadMouseClicked
+    }//GEN-LAST:event_lblListaActividadesMouseClicked
 
     private void lblNombreCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreCursoMouseClicked
 
@@ -225,6 +223,10 @@ DefaultTableModel modeloEntregas = new DefaultTableModel();
     private void lblSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_lblSalirMouseClicked
+
+    private void lblAgregarActividad1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAgregarActividad1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblAgregarActividad1MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -266,7 +268,8 @@ DefaultTableModel modeloEntregas = new DefaultTableModel();
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblAgregarActividad;
+    private javax.swing.JLabel lblAgregarActividad1;
+    private javax.swing.JLabel lblListaActividades;
     public javax.swing.JLabel lblNombreCurso;
     private javax.swing.JLabel lblSalir;
     private javax.swing.JTable tblEntregas;
