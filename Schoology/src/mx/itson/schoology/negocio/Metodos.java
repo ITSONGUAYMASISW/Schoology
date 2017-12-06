@@ -14,6 +14,7 @@ import mx.itson.schoology.entidades.Usuario;
 import mx.itson.schoology.enumeradores.Estado;
 import mx.itson.schoology.enumeradores.Evaluacion;
 import mx.itson.schoology.enumeradores.Nota;
+import mx.itson.schoology.gui.CursoAlumno;
 import mx.itson.schoology.gui.InicioInterfaz;
 import mx.itson.schoology.gui.VistaMaestro;
 
@@ -157,7 +158,7 @@ public class Metodos {
             if (cursos.get(i).getAdministrador().getId() == u.getId()) {
         
             JButton boton = new JButton();
-            String nombre = cursos.get(i).getId() + " " + cursos.get(i).getNombre();
+            String nombre = cursos.get(i).getNombre();
              boton.setText(nombre);
              String nombreas = cursos.get(i).getNombre();
              Curso cm = cursos.get(i);
@@ -192,12 +193,13 @@ public class Metodos {
             if (inscritos.get(i).getUsuario().getId() == u.getId()) {
                 
             JButton boton = new JButton();
-            String nombre = inscritos.get(i).getCurso().getId() + " " 
-                    + inscritos.get(i).getCurso().getNombre();
+            String nombre = inscritos.get(i).getCurso().getNombre();
              boton.setText(nombre);
+             Curso cr = inscritos.get(i).getCurso();
             boton.addActionListener((ActionEvent e) -> {
                 
-               
+               CursoAlumno ca = new CursoAlumno(u,cr);
+               ca.setVisible(true);
                 
             });
             panel.add(boton);

@@ -5,6 +5,7 @@
  */
 package mx.itson.schoology.gui;
 
+import mx.itson.schoology.entidades.Actividad;
 import mx.itson.schoology.entidades.Usuario;
 
 /**
@@ -14,14 +15,14 @@ import mx.itson.schoology.entidades.Usuario;
 public class SubirTarea extends javax.swing.JFrame {
 
     private Usuario u;
-
+    private Actividad a;
     /**
      * Creates new form SubirTarea
      */
     public SubirTarea() {
         initComponents();
     }
-    public SubirTarea(Usuario u) {
+    public SubirTarea(Usuario u,Actividad a) {
         initComponents();
         this.u = u;
         System.out.println(u.getId());

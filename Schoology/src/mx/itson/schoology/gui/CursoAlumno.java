@@ -6,7 +6,9 @@
 package mx.itson.schoology.gui;
 
 import javax.swing.table.DefaultTableModel;
+import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;
+import mx.itson.schoology.negocio.Metodos;
 
 /**
  *
@@ -15,28 +17,34 @@ import mx.itson.schoology.entidades.Usuario;
 public class CursoAlumno extends javax.swing.JFrame {
 
     private Usuario u;
+    private Curso c;
+    Metodos mt = new Metodos();
+    DefaultTableModel model = new DefaultTableModel();
     
-
     /**
      * Creates new form CursoAlumno
      */
     public CursoAlumno() {
         initComponents();
-        
-        DefaultTableModel model = new DefaultTableModel();
-        String[] titulos = {"Actividad", "Nombre", "Publicación","Vencimiento"
-       ,"Evaluación"};
-        tblActividades.setModel(model);
-        model.setColumnIdentifiers(titulos);    
+         
     }
     
-    public CursoAlumno(Usuario u) {
+    public CursoAlumno(Usuario u, Curso c) {
         initComponents();
         this.u = u;
+        this.c=c;
         System.out.println(u.getId());
         System.out.println(u.getNombre());
         txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
+        model.addColumn("Actividad");
+        model.addColumn("Nombre");
+        model.addColumn("Publicacion");
+        model.addColumn("Vencimiento");
+        model.addColumn("Evaluacion");
+        tblActividades.setModel(model);
         
+        txtUsuario.setText(u.getNombre() + " " + u.getApellido());
+        lblCurso.setText(c.getNombre());
     }
 
     /**
@@ -53,8 +61,8 @@ public class CursoAlumno extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        lblCerrarSesion = new javax.swing.JLabel();
         lblCurso = new javax.swing.JLabel();
+        lblCerrarSesion1 = new javax.swing.JLabel();
         btnMostrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblActividades = new javax.swing.JTable();
@@ -81,19 +89,25 @@ public class CursoAlumno extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCerrarSesion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblCerrarSesion.setForeground(new java.awt.Color(204, 204, 204));
-        lblCerrarSesion.setText("Cerrar sesión");
-        lblCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblCurso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblCurso.setForeground(new java.awt.Color(204, 204, 204));
+        lblCurso.setText("Nombre Curso");
+        lblCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCerrarSesionMouseClicked(evt);
+                lblCursoMouseClicked(evt);
             }
         });
-        jPanel2.add(lblCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, -1, 40));
+        jPanel2.add(lblCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 150, 40));
 
-        lblCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCurso.setText("Nombre Curso");
-        jPanel2.add(lblCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 180, 40));
+        lblCerrarSesion1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblCerrarSesion1.setForeground(new java.awt.Color(204, 204, 204));
+        lblCerrarSesion1.setText("Salir");
+        lblCerrarSesion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCerrarSesion1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(lblCerrarSesion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 60, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 710, 40));
 
@@ -130,11 +144,14 @@ public class CursoAlumno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesionMouseClicked
-        LogIn li = new LogIn();
-        li.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lblCerrarSesionMouseClicked
+    private void lblCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCursoMouseClicked
+
+    }//GEN-LAST:event_lblCursoMouseClicked
+
+    private void lblCerrarSesion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesion1MouseClicked
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_lblCerrarSesion1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -178,7 +195,7 @@ public class CursoAlumno extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCerrarSesion;
+    private javax.swing.JLabel lblCerrarSesion1;
     private javax.swing.JLabel lblCurso;
     public javax.swing.JTable tblActividades;
     private javax.swing.JLabel txtUsuario;

@@ -100,7 +100,7 @@ public class AgregarTarea extends javax.swing.JFrame {
         jPanel1.add(cbEscala, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 166, -1));
 
         jLabel2.setText("Fecha y hora de entrega.");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));

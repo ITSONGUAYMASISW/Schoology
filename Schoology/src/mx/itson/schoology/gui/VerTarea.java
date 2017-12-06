@@ -5,6 +5,7 @@
  */
 package mx.itson.schoology.gui;
 
+import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;
 
 /**
@@ -14,7 +15,7 @@ import mx.itson.schoology.entidades.Usuario;
 public class VerTarea extends javax.swing.JFrame {
 
     private Usuario u;
-
+    private Curso c;
     /**
      * Creates new form VerTarea
      */
@@ -22,7 +23,7 @@ public class VerTarea extends javax.swing.JFrame {
         initComponents();
     }
     
-    public VerTarea(Usuario u) {
+    public VerTarea(Usuario u,Curso c) {
         initComponents();
         this.u = u;
         System.out.println(u.getId());
@@ -131,9 +132,7 @@ public class VerTarea extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
