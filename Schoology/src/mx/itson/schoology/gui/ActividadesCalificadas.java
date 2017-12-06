@@ -7,63 +7,64 @@ package mx.itson.schoology.gui;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import mx.itson.schoology.entidades.Actividad;
+import mx.itson.schoology.entidades.Calificacion;
 import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;
-import mx.itson.schoology.negocio.Metodos;
 
 /**
  *
  * @author Francisco
  */
-public class VistaAlumno extends javax.swing.JFrame {
+public class ActividadesCalificadas extends javax.swing.JFrame {
 
-    private Usuario u;
-    private Curso c;
-    Metodos mt = new Metodos();
-    Actividad a = new Actividad();
-    List<Actividad> actividades = a.obtenerTodos();
-    DefaultTableModel model = new DefaultTableModel();
-    
     /**
-     * Creates new form CursoAlumno
+     * Creates new form ActividadesCalificadas
      */
-    public VistaAlumno() {
+    Usuario u;
+    Curso c;
+    DefaultTableModel modelo = new DefaultTableModel();
+    Calificacion cn = new Calificacion();
+    public ActividadesCalificadas() {
         initComponents();
-         
+        
+        
     }
     
-    public VistaAlumno(Usuario u, Curso c) {
+    public ActividadesCalificadas(Usuario u, Curso c) {
         initComponents();
         setLocationRelativeTo(null);
         this.u=u;
         this.c=c;
-        model.addColumn("Id");
-        model.addColumn("Actividad");
-        model.addColumn("Publicacion");
-        model.addColumn("Vencimiento");
-        model.addColumn("Evaluacion");
-        tblActividades.setModel(model);
         txtUsuario.setText(u.getNombre() + " " + u.getApellido());
         lblCurso1.setText(c.getNombre());
+      
+        modelo.addColumn("Id");
+        modelo.addColumn("Actividad");
+        modelo.addColumn("Calificacion");
         
-           String [] datos = new String[5];
+        tblActividades.setModel(modelo);
         
-        for (int i = 0; i < actividades.size(); i++) {
-            
-            if (c.getId()==actividades.get(i).getCurso().getId()) {
-            
-            datos[0] = String.valueOf(actividades.get(i).getId());
-            datos[1]= actividades.get(i).getNombre();
-            datos[2]= actividades.get(i).getPublicacion().toString();
-            datos[3]= actividades.get(i).getVencimiento().toString();
-            datos[4]= actividades.get(i).getEvaluacion().toString();
-            
-            model.addRow(datos);
-            }
-        }
-    }
+        List<Calificacion> cos = cn.obtenerTodos();
+        String [] datos = new String[3];
 
+       
+        for (int i = 0; i < cos.size(); i++) {
+            
+            if (cos.get(i).getEstudiante().getId()==u.getId() && cos.get(i).getActividad().getCurso().getId()==c.getId()) {
+                
+            datos[0] = String.valueOf(cos.get(i).getActividad().getId());
+            datos[1]= cos.get(i).getActividad().getNombre();
+            datos[2]= cos.get(i).getNota().toString();
+
+            modelo.addRow(datos);
+                
+            }
+            
+        }
+        
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,51 +74,30 @@ public class VistaAlumno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        lblCalificadas = new javax.swing.JLabel();
         lblCerrarSesion1 = new javax.swing.JLabel();
         lblCurso1 = new javax.swing.JLabel();
-        btnMostrar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblActividades = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("BIENVENIDO/A");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/schoology/imagenes/logoschoool.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
         txtUsuario.setText("USUARIO");
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 317, 53));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblCalificadas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblCalificadas.setForeground(new java.awt.Color(204, 204, 204));
-        lblCalificadas.setText("Actividades Calificadas");
-        lblCalificadas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCalificadasMouseClicked(evt);
-            }
-        });
-        jPanel2.add(lblCalificadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 150, 40));
 
         lblCerrarSesion1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblCerrarSesion1.setForeground(new java.awt.Color(204, 204, 204));
@@ -139,18 +119,7 @@ public class VistaAlumno extends javax.swing.JFrame {
         });
         jPanel2.add(lblCurso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 150, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 710, 40));
-
-        btnMostrar.setBackground(new java.awt.Color(0, 102, 153));
-        btnMostrar.setText("Mostrar");
-        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 90, -1));
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Actividades"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(" Actividades Calificadas"));
 
         tblActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -182,47 +151,51 @@ public class VistaAlumno extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 660, 270));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1)
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel6)
+                        .addGap(9, 9, 9)
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(7, 7, 7)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblCalificadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCalificadasMouseClicked
-        ActividadesCalificadas ac = new ActividadesCalificadas(u,c);
-        ac.setVisible(true);
-    }//GEN-LAST:event_lblCalificadasMouseClicked
-
     private void lblCerrarSesion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesion1MouseClicked
-        
+
         this.setVisible(false);
     }//GEN-LAST:event_lblCerrarSesion1MouseClicked
-
-    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-
-        int x = Integer.parseInt(tblActividades.getValueAt(tblActividades.getSelectedRow(), 0).toString());
-        
-        
-        for (int i = 0; i < actividades.size(); i++) {
-            if (x == actividades.get(i).getId()) {
-                        ActividadAlumno vt = new ActividadAlumno(u,actividades.get(i));
-                        vt.setVisible(true);
-            }
-        }
-        
-
-                
-    }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void lblCurso1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCurso1MouseClicked
         // TODO add your handling code here:
@@ -245,34 +218,30 @@ public class VistaAlumno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadesCalificadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadesCalificadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadesCalificadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadesCalificadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaAlumno().setVisible(true);
+                new ActividadesCalificadas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCalificadas;
     private javax.swing.JLabel lblCerrarSesion1;
     private javax.swing.JLabel lblCurso1;
     public javax.swing.JTable tblActividades;
