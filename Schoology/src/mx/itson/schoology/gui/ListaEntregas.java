@@ -7,6 +7,7 @@ package mx.itson.schoology.gui;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import mx.itson.schoology.entidades.Actividad;
 import mx.itson.schoology.entidades.Entrega;
 import mx.itson.schoology.entidades.Usuario;
 
@@ -14,25 +15,27 @@ import mx.itson.schoology.entidades.Usuario;
  *
  * @author Francisco
  */
-public class Entregas extends javax.swing.JFrame {
+public class ListaEntregas extends javax.swing.JFrame {
 
     /**
-     * Creates new form Entregas
+     * Creates new form ListaEntregas
      */
     
     List<Entrega> entregas;
     Usuario u;
+    Actividad a;
     DefaultTableModel modelo = new DefaultTableModel();
-    public Entregas() {
+    public ListaEntregas() {
         initComponents();
     }
 
-    public Entregas(List<Entrega> entregas,Usuario u) {
+    public ListaEntregas(List<Entrega> entregas,Usuario u,Actividad a) {
         initComponents();
+        setLocationRelativeTo(null);
         this.entregas=entregas;
         this.u =u;
-        
-        txtUsuario.setText(u.getNombre());
+        this.a = a;
+        txtUsuario.setText(u.getNombre() + " " + u.getApellido());
         modelo.addColumn("Id");
         modelo.addColumn("Alumno");
         modelo.addColumn("Fecha de entrega");
@@ -76,7 +79,7 @@ public class Entregas extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -84,7 +87,7 @@ public class Entregas extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/schoology/imagenes/logoschoool.png"))); // NOI18N
 
-        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
         txtUsuario.setText("USUARIO");
 
@@ -92,6 +95,7 @@ public class Entregas extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Entregas");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 100, 40));
@@ -177,14 +181,10 @@ public class Entregas extends javax.swing.JFrame {
                 if (es.get(i).getId()== x) {
                     
                     e = es.get(i);
-                    CalificarTarea ct = new CalificarTarea(u,e);
-                    
+                    CalificarEntrega ct = new CalificarEntrega(u,a,e);
+                    ct.setVisible(true);
                     }
                 }
-            
-        
-        
-        CalificarTarea ct = new CalificarTarea();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -204,20 +204,21 @@ public class Entregas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Entregas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaEntregas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Entregas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaEntregas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Entregas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaEntregas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Entregas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaEntregas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Entregas().setVisible(true);
+                new ListaEntregas().setVisible(true);
             }
         });
     }

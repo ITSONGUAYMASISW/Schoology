@@ -2,6 +2,7 @@ package mx.itson.schoology.entidades;
 
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ import org.hibernate.Transaction;
  * @author FranciscoQuijada
  * @author VivianMunguia
  */
+@Entity
 public class Calificacion {
     
     private int id;

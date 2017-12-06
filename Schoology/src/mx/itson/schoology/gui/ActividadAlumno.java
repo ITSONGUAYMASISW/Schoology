@@ -13,18 +13,18 @@ import mx.itson.schoology.entidades.Usuario;
  *
  * @author Francisco
  */
-public class VerTarea extends javax.swing.JFrame {
+public class ActividadAlumno extends javax.swing.JFrame {
 
     private Usuario u;
     private Actividad a;
     /**
      * Creates new form VerTarea
      */
-    public VerTarea() {
+    public ActividadAlumno() {
         initComponents();
     }
     
-    public VerTarea(Usuario u, Actividad a) {
+    public ActividadAlumno(Usuario u, Actividad a) {
         initComponents();
         this.u = u;
         this.a = a;
@@ -35,7 +35,7 @@ public class VerTarea extends javax.swing.JFrame {
         txtADescripcion.setText(a.getDescripcion());
         lblPublicacion.setText(a.getPublicacion().toString());
         lblVencimiento.setText(a.getVencimiento().toString());
-        
+        setLocationRelativeTo(null);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,7 +151,7 @@ public class VerTarea extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirActionPerformed
-        SubirTarea sb = new SubirTarea(u,a);
+        RealizarEntrega sb = new RealizarEntrega(u,a);
         sb.setVisible(true);
     }//GEN-LAST:event_btnSubirActionPerformed
 
@@ -172,20 +172,23 @@ public class VerTarea extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VerTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VerTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VerTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VerTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VerTarea().setVisible(true);
+                new ActividadAlumno().setVisible(true);
             }
         });
     }

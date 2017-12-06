@@ -16,7 +16,7 @@ import mx.itson.schoology.negocio.Metodos;
  *
  * @author Francisco
  */
-public class CursoAlumno extends javax.swing.JFrame {
+public class VistaAlumno extends javax.swing.JFrame {
 
     private Usuario u;
     private Curso c;
@@ -28,13 +28,14 @@ public class CursoAlumno extends javax.swing.JFrame {
     /**
      * Creates new form CursoAlumno
      */
-    public CursoAlumno() {
+    public VistaAlumno() {
         initComponents();
          
     }
     
-    public CursoAlumno(Usuario u, Curso c) {
+    public VistaAlumno(Usuario u, Curso c) {
         initComponents();
+        setLocationRelativeTo(null);
         this.u=u;
         this.c=c;
         model.addColumn("Id");
@@ -43,7 +44,7 @@ public class CursoAlumno extends javax.swing.JFrame {
         model.addColumn("Vencimiento");
         model.addColumn("Evaluacion");
         tblActividades.setModel(model);
-        
+        txtUsuario.setText(u.getNombre() + " " + u.getApellido());
         lblCurso.setText(c.getNombre());
         
            String [] datos = new String[5];
@@ -80,10 +81,12 @@ public class CursoAlumno extends javax.swing.JFrame {
         lblCurso = new javax.swing.JLabel();
         lblCerrarSesion1 = new javax.swing.JLabel();
         btnMostrar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblActividades = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -134,7 +137,9 @@ public class CursoAlumno extends javax.swing.JFrame {
                 btnMostrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 90, -1));
+        jPanel1.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 90, -1));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Actividades"));
 
         tblActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -149,7 +154,24 @@ public class CursoAlumno extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblActividades);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 420, 240));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 660, 270));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,7 +203,7 @@ public class CursoAlumno extends javax.swing.JFrame {
         
         for (int i = 0; i < actividades.size(); i++) {
             if (x == actividades.get(i).getId()) {
-                        VerTarea vt = new VerTarea(u,actividades.get(i));
+                        ActividadAlumno vt = new ActividadAlumno(u,actividades.get(i));
                         vt.setVisible(true);
             }
         }
@@ -207,20 +229,21 @@ public class CursoAlumno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CursoAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CursoAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CursoAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CursoAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CursoAlumno().setVisible(true);
+                new VistaAlumno().setVisible(true);
             }
         });
     }
@@ -231,6 +254,7 @@ public class CursoAlumno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCerrarSesion1;
     private javax.swing.JLabel lblCurso;

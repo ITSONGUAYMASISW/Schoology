@@ -15,7 +15,7 @@ import mx.itson.schoology.negocio.Metodos;
  *
  * @author Dell
  */
-public class AgregarTarea extends javax.swing.JFrame {
+public class AgregarActividad extends javax.swing.JFrame {
 
     private Usuario u;
     Evaluacion e;
@@ -24,12 +24,13 @@ public class AgregarTarea extends javax.swing.JFrame {
     /**
      * Creates new form AgregarTarea
      */
-    public AgregarTarea() {
+    public AgregarActividad() {
         initComponents();
     }
     
-     public AgregarTarea(Usuario u,Curso c) {
+     public AgregarActividad(Usuario u,Curso c) {
         initComponents();
+        setLocationRelativeTo(null);
         this.u = u;
         this.c = c;
         System.out.println(u.getId());
@@ -203,20 +204,21 @@ public class AgregarTarea extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarTarea().setVisible(true);
+                new AgregarActividad().setVisible(true);
             }
         });
     }

@@ -5,6 +5,7 @@
  */
 package mx.itson.schoology.gui;
 
+import javax.swing.JOptionPane;
 import mx.itson.schoology.entidades.Actividad;
 import mx.itson.schoology.entidades.Entrega;
 import mx.itson.schoology.entidades.Usuario;
@@ -15,7 +16,7 @@ import mx.itson.schoology.negocio.Metodos;
  *
  * @author Francisco
  */
-public class CalificarTarea extends javax.swing.JFrame {
+public class CalificarEntrega extends javax.swing.JFrame {
 
     private Usuario u;
     private Actividad a;
@@ -24,19 +25,21 @@ public class CalificarTarea extends javax.swing.JFrame {
     /**
      * Creates new form CalificarTarea
      */
-    public CalificarTarea() {
+    public CalificarEntrega() {
         initComponents();
     }
     
-    public CalificarTarea(Usuario u, Actividad a, Entrega e) {
+    public CalificarEntrega(Usuario u, Actividad a, Entrega e) {
         initComponents();
+        setLocationRelativeTo(null);
         this.u = u;
         this.a = a;
         this.e = e;
         System.out.println(u.getId());
         System.out.println(u.getNombre());
         txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
-        
+        jLabel2.setText(e.getArchivoAdjunto());
+        jLabel1.setText(e.getEstudiante().getNombre());
         Nota n = null;
         
         if (a.getEvaluacion().toString().equals("NUMERICA")) {
@@ -137,7 +140,7 @@ public class CalificarTarea extends javax.swing.JFrame {
         jLabel7.setText("Nota:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
 
-        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
         txtUsuario.setText("USUARIO");
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 170, 53));
@@ -174,7 +177,11 @@ public class CalificarTarea extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        Metodos mt = new Metodos();
-       mt.Calificar(a, u, cbNota.getSelectedItem().toString(), e);
+        if (mt.Calificar(a, e.getEstudiante(), cbNota.getSelectedItem().toString(), e)) {
+           JOptionPane.showMessageDialog(null,"Tarea calificada correctamente.");
+           dispose();
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -194,20 +201,21 @@ public class CalificarTarea extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CalificarTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CalificarEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CalificarTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CalificarEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CalificarTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CalificarEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CalificarTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CalificarEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CalificarTarea().setVisible(true);
+                new CalificarEntrega().setVisible(true);
             }
         });
     }

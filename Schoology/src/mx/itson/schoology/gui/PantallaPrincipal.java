@@ -19,19 +19,20 @@ import mx.itson.schoology.negocio.Metodos;
  * @author FranciscoQuijada
  * @author VivianMunguia
  */
-public class InicioInterfaz extends javax.swing.JFrame {
+public class PantallaPrincipal extends javax.swing.JFrame {
     Usuario u = new Usuario();
     Metodos m = new Metodos();
     /**
      * Creates new form InicioInterfaz
      */
-    public InicioInterfaz() {
+    public PantallaPrincipal() {
         initComponents();
-
       
     }
-    public InicioInterfaz(Usuario u) {
+    public PantallaPrincipal(Usuario u) {
         initComponents();
+                setLocationRelativeTo(null);
+
         this.u = u;
         System.out.println(u.getId());
         System.out.println(u.getNombre());
@@ -65,6 +66,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -161,7 +163,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_lblIngresarCodigoMouseClicked
 
     private void lblCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesionMouseClicked
-        LogIn li = new LogIn();
+        IniciarSesion li = new IniciarSesion();
         li.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblCerrarSesionMouseClicked
@@ -183,21 +185,23 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InicioInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InicioInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InicioInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InicioInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InicioInterfaz().setVisible(true);
+                new PantallaPrincipal().setVisible(true);
             }
         });
     }

@@ -23,6 +23,7 @@ DefaultTableModel modeloEntregas;
     
     public VistaMaestro(Usuario u,Curso c) {
         initComponents();
+        setLocationRelativeTo(null);
         modeloMiembros = new DefaultTableModel();
         modeloEntregas = new DefaultTableModel();
         this.u = u;
@@ -70,6 +71,7 @@ DefaultTableModel modeloEntregas;
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/schoology/imagenes/logoschoool.png"))); // NOI18N
@@ -213,7 +215,7 @@ DefaultTableModel modeloEntregas;
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblListaActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListaActividadesMouseClicked
-            VerActividades va = new VerActividades(c,u);
+            ActividadesMaestro va = new ActividadesMaestro(c,u);
             va.setVisible(true);
             va.lblNombreCurso1.setText(c.getNombre());
     }//GEN-LAST:event_lblListaActividadesMouseClicked
@@ -227,7 +229,7 @@ DefaultTableModel modeloEntregas;
     }//GEN-LAST:event_lblSalirMouseClicked
 
     private void lblAgregarActividad1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAgregarActividad1MouseClicked
-        AgregarTarea at = new AgregarTarea(u,c);
+        AgregarActividad at = new AgregarActividad(u,c);
         at.setVisible(true);
     }//GEN-LAST:event_lblAgregarActividad1MouseClicked
 

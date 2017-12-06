@@ -15,7 +15,7 @@ import mx.itson.schoology.negocio.Metodos;
  *
  * @author Francisco
  */
-public class SubirTarea extends javax.swing.JFrame {
+public class RealizarEntrega extends javax.swing.JFrame {
 
     private Usuario u;
     private Actividad a;
@@ -24,11 +24,12 @@ public class SubirTarea extends javax.swing.JFrame {
     /**
      * Creates new form SubirTarea
      */
-    public SubirTarea() {
+    public RealizarEntrega() {
         initComponents();
     }
-    public SubirTarea(Usuario u,Actividad a) {
+    public RealizarEntrega(Usuario u,Actividad a) {
         initComponents();
+        setLocationRelativeTo(null);
         this.u = u;
         this.a=a;
         System.out.println(u.getId());
@@ -166,20 +167,21 @@ public class SubirTarea extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SubirTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SubirTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SubirTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SubirTarea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SubirTarea().setVisible(true);
+                new RealizarEntrega().setVisible(true);
             }
         });
     }

@@ -17,7 +17,7 @@ import mx.itson.schoology.entidades.Usuario;
  *
  * @author Francisco
  */
-public class VerActividades extends javax.swing.JFrame {
+public class ActividadesMaestro extends javax.swing.JFrame {
 
     DefaultTableModel modelo = new DefaultTableModel();
     Curso c;
@@ -25,8 +25,9 @@ public class VerActividades extends javax.swing.JFrame {
     Actividad a = new Actividad();
     List<Actividad> actividades = a.obtenerTodos();
 
-    public VerActividades(Curso cu,Usuario u) {
+    public ActividadesMaestro(Curso cu,Usuario u) {
         initComponents();
+        setLocationRelativeTo(null);
         this.c=cu;
         this.u=u;
         modelo.addColumn("Id");
@@ -34,7 +35,7 @@ public class VerActividades extends javax.swing.JFrame {
         modelo.addColumn("Fecha de publicacion");
         modelo.addColumn("Fecha de vencimiento");
         modelo.addColumn("Metodo de Evaluacion");
-        
+        txtUsuario.setText(u.getNombre() + " " + u.getApellido());
         tbActividades.setModel(modelo);
         
         String [] datos = new String[5];
@@ -57,7 +58,7 @@ public class VerActividades extends javax.swing.JFrame {
         
     }
     
-    public VerActividades(){
+    public ActividadesMaestro(){
         initComponents();
     }
 
@@ -80,7 +81,8 @@ public class VerActividades extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbActividades = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -191,7 +193,7 @@ public class VerActividades extends javax.swing.JFrame {
                         if (es.get(j).getActividad().getId()== x) {
                             
                            enCurso.add(es.get(i));
-                            
+                            a=es.get(j).getActividad();
                         }
                     }
                 }
@@ -200,7 +202,7 @@ public class VerActividades extends javax.swing.JFrame {
             
             
         
-        Entregas esg = new Entregas(enCurso,u);
+        ListaEntregas esg = new ListaEntregas(enCurso,u,a);
         esg.setVisible(true);
         
     }//GEN-LAST:event_lblVerEntregasMouseClicked
@@ -230,20 +232,21 @@ public class VerActividades extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VerActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadesMaestro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VerActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadesMaestro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VerActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadesMaestro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VerActividades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActividadesMaestro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VerActividades().setVisible(true);
+                new ActividadesMaestro().setVisible(true);
             }
         });
     }

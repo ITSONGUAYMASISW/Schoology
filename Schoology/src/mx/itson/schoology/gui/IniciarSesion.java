@@ -11,13 +11,13 @@ import mx.itson.schoology.negocio.Metodos;
  * @author FranciscoQuijada
  * @author VivianMunguia
  */
-public class LogIn extends javax.swing.JFrame {
+public class IniciarSesion extends javax.swing.JFrame {
 
     /**
      * Creates new form Log In.
      */
     Metodos mt = new Metodos();
-    public LogIn() {
+    public IniciarSesion() {
         initComponents();
         setLocationRelativeTo(null);
 
@@ -188,7 +188,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        SignUp su = new SignUp();
+        RegistrarUsuario su = new RegistrarUsuario();
         su.setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
 
@@ -223,21 +223,23 @@ public class LogIn extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LogIn().setVisible(true);
+                new IniciarSesion().setVisible(true);
             }
         });
     }

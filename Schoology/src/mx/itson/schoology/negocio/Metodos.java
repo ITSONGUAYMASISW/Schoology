@@ -14,8 +14,8 @@ import mx.itson.schoology.entidades.Usuario;
 import mx.itson.schoology.enumeradores.Estado;
 import mx.itson.schoology.enumeradores.Evaluacion;
 import mx.itson.schoology.enumeradores.Nota;
-import mx.itson.schoology.gui.CursoAlumno;
-import mx.itson.schoology.gui.InicioInterfaz;
+import mx.itson.schoology.gui.VistaAlumno;
+import mx.itson.schoology.gui.PantallaPrincipal;
 import mx.itson.schoology.gui.VistaMaestro;
 
 /**
@@ -152,7 +152,7 @@ public class Metodos {
                 u2.setCorreo(usuarios.get(i).getCorreo());
                 u2.setContrasena(usuarios.get(i).getContrasena());
                 
-                InicioInterfaz ii = new InicioInterfaz(u2);
+                PantallaPrincipal ii = new PantallaPrincipal(u2);
                 ii.setVisible(true);
                 return true;
             }            
@@ -243,7 +243,7 @@ public class Metodos {
              Curso cr = inscritos.get(i).getCurso();
             boton.addActionListener((ActionEvent e) -> {
                 
-               CursoAlumno ca = new CursoAlumno(u,cr);
+               VistaAlumno ca = new VistaAlumno(u,cr);
                ca.setVisible(true);
                 
             });
