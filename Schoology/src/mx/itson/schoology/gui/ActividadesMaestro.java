@@ -90,7 +90,7 @@ public class ActividadesMaestro extends javax.swing.JFrame {
         lblVerEntregas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblVerEntregas.setForeground(new java.awt.Color(204, 204, 204));
         lblVerEntregas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVerEntregas.setText("Ver actividades");
+        lblVerEntregas.setText("Ver entregas");
         lblVerEntregas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblVerEntregasMouseClicked(evt);
