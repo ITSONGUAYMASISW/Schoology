@@ -5,10 +5,13 @@
  */
 package mx.itson.schoology.gui;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.schoology.entidades.Actividad;
 import mx.itson.schoology.entidades.Curso;
+import mx.itson.schoology.entidades.Entrega;
+import mx.itson.schoology.entidades.Usuario;
 
 /**
  *
@@ -18,12 +21,14 @@ public class VerActividades extends javax.swing.JFrame {
 
     DefaultTableModel modelo = new DefaultTableModel();
     Curso c;
+    Usuario u;
     Actividad a = new Actividad();
     List<Actividad> actividades = a.obtenerTodos();
 
-    public VerActividades(Curso cu) {
+    public VerActividades(Curso cu,Usuario u) {
         initComponents();
         this.c=cu;
+        this.u=u;
         modelo.addColumn("Id");
         modelo.addColumn("Nombre");
         modelo.addColumn("Fecha de publicacion");
@@ -83,7 +88,7 @@ public class VerActividades extends javax.swing.JFrame {
         lblVerEntregas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblVerEntregas.setForeground(new java.awt.Color(204, 204, 204));
         lblVerEntregas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVerEntregas.setText("Ver entregas de actividad");
+        lblVerEntregas.setText("Ver actividades");
         lblVerEntregas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblVerEntregasMouseClicked(evt);
@@ -173,6 +178,30 @@ public class VerActividades extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblVerEntregasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerEntregasMouseClicked
+        Entrega e = new Entrega();
+        List<Entrega> es = e.obtenerTodos();
+        List<Entrega> enCurso = new ArrayList<>();
+        
+        int x = Integer.parseInt(tbActividades.getValueAt(tbActividades.getSelectedRow(), 0).toString());
+                
+            for (int i = 0; i < actividades.size() ; i++) {
+            
+                if (actividades.get(i).getId()== x) {
+                    for (int j = 0; j < es.size(); j++) {
+                        if (es.get(j).getActividad().getId()== x) {
+                            
+                           enCurso.add(es.get(i));
+                            
+                        }
+                    }
+                }
+                
+        }
+            
+            
+        
+        Entregas esg = new Entregas(enCurso,u);
+        esg.setVisible(true);
         
     }//GEN-LAST:event_lblVerEntregasMouseClicked
 

@@ -8,7 +8,6 @@ package mx.itson.schoology.gui;
 import mx.itson.schoology.entidades.Actividad;
 import mx.itson.schoology.entidades.Entrega;
 import mx.itson.schoology.entidades.Usuario;
-import mx.itson.schoology.enumeradores.Estado;
 import mx.itson.schoology.enumeradores.Nota;
 import mx.itson.schoology.negocio.Metodos;
 

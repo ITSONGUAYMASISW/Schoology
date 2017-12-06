@@ -5,6 +5,11 @@
  */
 package mx.itson.schoology.gui;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import mx.itson.schoology.entidades.Entrega;
+import mx.itson.schoology.entidades.Usuario;
+
 /**
  *
  * @author Francisco
@@ -14,10 +19,45 @@ public class Entregas extends javax.swing.JFrame {
     /**
      * Creates new form Entregas
      */
+    
+    List<Entrega> entregas;
+    Usuario u;
+    DefaultTableModel modelo = new DefaultTableModel();
     public Entregas() {
         initComponents();
     }
 
+    public Entregas(List<Entrega> entregas,Usuario u) {
+        initComponents();
+        this.entregas=entregas;
+        this.u =u;
+        
+        txtUsuario.setText(u.getNombre());
+        modelo.addColumn("Id");
+        modelo.addColumn("Alumno");
+        modelo.addColumn("Fecha de entrega");
+        modelo.addColumn("Estado");
+
+        jTable1.setModel(modelo);
+        
+        String[] datos = new String[4];
+        
+        for (int i = 0; i < entregas.size(); i++) {
+            
+             datos[0] = String.valueOf(entregas.get(i).getId());
+             datos[1] = entregas.get(i).getEstudiante().getNombre();
+             datos[2] = entregas.get(i).getFecha().toString();
+             datos[3] = entregas.get(i).getEstado().toString();
+             modelo.addRow(datos);
+            
+        }
+        
+        
+        
+        
+    }    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +84,7 @@ public class Entregas extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/schoology/imagenes/logoschoool.png"))); // NOI18N
 
-        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
         txtUsuario.setText("USUARIO");
 
@@ -70,6 +110,11 @@ public class Entregas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Ver Entrega");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,6 +165,28 @@ public class Entregas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        Entrega e = new Entrega();
+        List<Entrega> es = e.obtenerTodos();
+        
+       int x = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
+                
+            for (int i = 0; i < es.size() ; i++) {
+            
+                if (es.get(i).getId()== x) {
+                    
+                    e = es.get(i);
+                    CalificarTarea ct = new CalificarTarea(u,e);
+                    
+                    }
+                }
+            
+        
+        
+        CalificarTarea ct = new CalificarTarea();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -162,7 +229,7 @@ public class Entregas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

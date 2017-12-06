@@ -213,7 +213,7 @@ DefaultTableModel modeloEntregas;
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblListaActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListaActividadesMouseClicked
-            VerActividades va = new VerActividades(c);
+            VerActividades va = new VerActividades(c,u);
             va.setVisible(true);
             va.lblNombreCurso1.setText(c.getNombre());
     }//GEN-LAST:event_lblListaActividadesMouseClicked

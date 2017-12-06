@@ -289,7 +289,7 @@ public class Metodos {
                   
                    datos[0] = entregas.get(i).getEstudiante().getNombre();
                    datos[1] = entregas.get(i).getActividad().getNombre();
-                   
+                   datos[2] = entregas.get(i).getEstado().toString();
                   modelo.addRow(datos);
               }
               
