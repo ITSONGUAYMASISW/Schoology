@@ -5,7 +5,9 @@
  */
 package mx.itson.schoology.gui;
 
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import mx.itson.schoology.entidades.Actividad;
 import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;
 import mx.itson.schoology.negocio.Metodos;
@@ -19,6 +21,8 @@ public class CursoAlumno extends javax.swing.JFrame {
     private Usuario u;
     private Curso c;
     Metodos mt = new Metodos();
+    Actividad a = new Actividad();
+    List<Actividad> actividades = a.obtenerTodos();
     DefaultTableModel model = new DefaultTableModel();
     
     /**
@@ -31,20 +35,30 @@ public class CursoAlumno extends javax.swing.JFrame {
     
     public CursoAlumno(Usuario u, Curso c) {
         initComponents();
-        this.u = u;
-        this.c=c;
-        System.out.println(u.getId());
-        System.out.println(u.getNombre());
-        txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
+        model.addColumn("Id");
         model.addColumn("Actividad");
-        model.addColumn("Nombre");
         model.addColumn("Publicacion");
         model.addColumn("Vencimiento");
         model.addColumn("Evaluacion");
         tblActividades.setModel(model);
         
-        txtUsuario.setText(u.getNombre() + " " + u.getApellido());
         lblCurso.setText(c.getNombre());
+        
+           String [] datos = new String[4];
+        
+        for (int i = 0; i < actividades.size(); i++) {
+            
+            if (c.getId()==actividades.get(i).getCurso().getId()) {
+            
+            datos[0] = String.valueOf(actividades.get(i).getId());
+            datos[1]= actividades.get(i).getNombre();
+            datos[2]= actividades.get(i).getPublicacion().toString();
+            datos[3]= actividades.get(i).getVencimiento().toString();
+            datos[4]= actividades.get(i).getEvaluacion().toString();
+            
+            model.addRow(datos);
+            }
+        }
     }
 
     /**

@@ -24,7 +24,7 @@ public class VerActividades extends javax.swing.JFrame {
     public VerActividades(Curso cu) {
         initComponents();
         this.c=cu;
-        
+        modelo.addColumn("Id");
         modelo.addColumn("Nombre");
         modelo.addColumn("Fecha de publicacion");
         modelo.addColumn("Fecha de vencimiento");
@@ -32,19 +32,19 @@ public class VerActividades extends javax.swing.JFrame {
         
         tbActividades.setModel(modelo);
         
-
-        
         String [] datos = new String[4];
         
         for (int i = 0; i < actividades.size(); i++) {
             
             if (c.getId()==actividades.get(i).getCurso().getId()) {
             
-            datos[0]= a.getNombre();
-            datos[1]= a.getPublicacion().toString();
-            datos[2]= a.getVencimiento().toString();
-            datos[3]= a.getEvaluacion().toString();
-                
+            datos[0] = String.valueOf(actividades.get(i).getId());
+            datos[1]= actividades.get(i).getNombre();
+            datos[2]= actividades.get(i).getPublicacion().toString();
+            datos[3]= actividades.get(i).getVencimiento().toString();
+            datos[4]= actividades.get(i).getEvaluacion().toString();
+            
+            modelo.addRow(datos);
             }
             
         }

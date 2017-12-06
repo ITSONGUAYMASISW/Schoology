@@ -5,6 +5,7 @@
  */
 package mx.itson.schoology.gui;
 
+import javax.swing.JOptionPane;
 import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;
 import mx.itson.schoology.enumeradores.Evaluacion;
@@ -59,6 +60,7 @@ public class AgregarTarea extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
+        jfecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -104,7 +106,7 @@ public class AgregarTarea extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 166, -1));
 
         cbEscala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metodo de evaluacion" }));
-        jPanel1.add(cbEscala, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 166, -1));
+        jPanel1.add(cbEscala, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 166, -1));
 
         jLabel2.setText("Fecha y hora de entrega.");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
@@ -130,16 +132,17 @@ public class AgregarTarea extends javax.swing.JFrame {
         txtUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtUsuario.setText("USUARIO");
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 270, 53));
+        jPanel1.add(jfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
         );
 
         pack();
@@ -152,7 +155,10 @@ public class AgregarTarea extends javax.swing.JFrame {
 
     private void txtNombreTareaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreTareaFocusLost
         // TODO add your handling code here:
-        txtNombreTarea.setText("Nombre tarea");
+       
+        if (txtNombreTarea.getText().equals("")) {
+            txtNombreTarea.setText("Nombre tarea");
+        }
     }//GEN-LAST:event_txtNombreTareaFocusLost
 
     private void txtDescripcionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescripcionFocusGained
@@ -162,12 +168,22 @@ public class AgregarTarea extends javax.swing.JFrame {
 
     private void txtDescripcionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescripcionFocusLost
         // TODO add your handling code here:
+        if (txtDescripcion.getText().equals("")) {
         txtDescripcion.setText("Descripción");
+        }
     }//GEN-LAST:event_txtDescripcionFocusLost
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         Metodos m = new Metodos();
-//        m.CrearActividad(txtNombreTarea.getText(), txtDescripcion.getText(), dtFechaVencimiento.getDate(), c, cbEscala.getSelectedItem().toString());
+        
+        if ( m.CrearActividad(txtNombreTarea.getText(), txtDescripcion.getText(), jfecha.getDate(), c, cbEscala.getSelectedItem().toString())) {
+            JOptionPane.showMessageDialog(null,"Actividad creada.");
+            txtNombreTarea.setText("");
+            txtDescripcion.setText("");
+            jfecha.setDate(null);
+            cbEscala.setSelectedIndex(0);
+        }
+    
     }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
@@ -215,6 +231,7 @@ public class AgregarTarea extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jfecha;
     private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtNombreTarea;
     private javax.swing.JLabel txtUsuario;
