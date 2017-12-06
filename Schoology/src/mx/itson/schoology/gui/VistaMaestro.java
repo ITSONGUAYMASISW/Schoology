@@ -213,7 +213,9 @@ DefaultTableModel modeloEntregas;
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblListaActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListaActividadesMouseClicked
-
+            VerActividades va = new VerActividades(c);
+            va.setVisible(true);
+            va.lblNombreCurso.setText(c.getNombre());
     }//GEN-LAST:event_lblListaActividadesMouseClicked
 
     private void lblNombreCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreCursoMouseClicked
@@ -227,7 +229,6 @@ DefaultTableModel modeloEntregas;
     private void lblAgregarActividad1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAgregarActividad1MouseClicked
         AgregarTarea at = new AgregarTarea(u,c);
         at.setVisible(true);
-        dispose();
     }//GEN-LAST:event_lblAgregarActividad1MouseClicked
 
     public static void main(String args[]) {

@@ -16,14 +16,15 @@ import mx.itson.schoology.entidades.Curso;
  */
 public class VerActividades extends javax.swing.JFrame {
 
-    DefaultTableModel modelo;
+    DefaultTableModel modelo = new DefaultTableModel();
     Curso c;
     Actividad a = new Actividad();
     List<Actividad> actividades = a.obtenerTodos();
 
-    public VerActividades(Curso c) {
+    public VerActividades(Curso cu) {
         initComponents();
-        this.c=c;
+        this.c=cu;
+        
         modelo.addColumn("Nombre");
         modelo.addColumn("Fecha de publicacion");
         modelo.addColumn("Fecha de vencimiento");
@@ -31,7 +32,7 @@ public class VerActividades extends javax.swing.JFrame {
         
         tbActividades.setModel(modelo);
         
-        lblNombreCurso.setText(c.getNombre());
+
         
         String [] datos = new String[4];
         
@@ -47,8 +48,7 @@ public class VerActividades extends javax.swing.JFrame {
             }
             
         }
-        
-
+       
         
     }
     
@@ -81,7 +81,6 @@ public class VerActividades extends javax.swing.JFrame {
 
         lblNombreCurso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblNombreCurso.setForeground(new java.awt.Color(204, 204, 204));
-        lblNombreCurso.setText("Nombre del curso");
         lblNombreCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNombreCursoMouseClicked(evt);

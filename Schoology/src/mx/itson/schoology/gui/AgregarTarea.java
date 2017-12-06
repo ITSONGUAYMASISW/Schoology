@@ -60,7 +60,7 @@ public class AgregarTarea extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -125,10 +125,11 @@ public class AgregarTarea extends javax.swing.JFrame {
         jLabel8.setText("BIENVENIDO/A");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
 
-        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
+        txtUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtUsuario.setText("USUARIO");
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 170, 53));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 270, 53));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,7 +167,7 @@ public class AgregarTarea extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         Metodos m = new Metodos();
-        m.CrearActividad(txtNombreTarea.getText(), txtDescripcion.getText(), dtFechaVencimiento.getDate(), c, cbEscala.getSelectedItem().toString());
+//        m.CrearActividad(txtNombreTarea.getText(), txtDescripcion.getText(), dtFechaVencimiento.getDate(), c, cbEscala.getSelectedItem().toString());
     }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
