@@ -5,11 +5,14 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import mx.itson.schoology.enumeradores.Estado;
 import mx.itson.schoology.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -30,7 +33,8 @@ public class Entrega {
     private Date fecha;
     private Usuario estudiante;
     private Actividad actividad;
-
+    private Estado estado;
+    
     /**
      * @return the id
      */
@@ -121,6 +125,8 @@ public class Entrega {
         this.actividad = actividad;
     }
     
+    
+    
     /**
      * Método para obtener datos.
      * @return Devuelve entregas.
@@ -146,5 +152,20 @@ public class Entrega {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    /**
+     * @return the estado
+     */
+    @Enumerated(EnumType.STRING)
+    public Estado getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }

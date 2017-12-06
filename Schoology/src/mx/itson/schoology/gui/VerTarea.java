@@ -5,6 +5,7 @@
  */
 package mx.itson.schoology.gui;
 
+import mx.itson.schoology.entidades.Actividad;
 import mx.itson.schoology.entidades.Curso;
 import mx.itson.schoology.entidades.Usuario;
 
@@ -15,7 +16,7 @@ import mx.itson.schoology.entidades.Usuario;
 public class VerTarea extends javax.swing.JFrame {
 
     private Usuario u;
-    private Curso c;
+    private Actividad a;
     /**
      * Creates new form VerTarea
      */
@@ -23,12 +24,17 @@ public class VerTarea extends javax.swing.JFrame {
         initComponents();
     }
     
-    public VerTarea(Usuario u,Curso c) {
+    public VerTarea(Usuario u, Actividad a) {
         initComponents();
         this.u = u;
+        this.a = a;
         System.out.println(u.getId());
         System.out.println(u.getNombre());
         txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
+        lblNombre.setText(a.getNombre());
+        txtADescripcion.setText(a.getDescripcion());
+        lblPublicacion.setText(a.getPublicacion().toString());
+        lblVencimiento.setText(a.getVencimiento().toString());
         
     }
     /**
@@ -47,21 +53,20 @@ public class VerTarea extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnCancelar = new javax.swing.JButton();
         btnSubir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblPublicacion = new javax.swing.JLabel();
+        lblVencimiento = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtADescripcion = new javax.swing.JTextArea();
 
         jLabel9.setText("jLabel8");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -90,12 +95,14 @@ public class VerTarea extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 550, 40));
 
-        btnCancelar.setText("Cancelar");
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 90, -1));
-
         btnSubir.setBackground(new java.awt.Color(0, 102, 153));
         btnSubir.setText("Subir");
-        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 90, -1));
+        btnSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 130, -1));
 
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Vencimiento:");
@@ -113,18 +120,19 @@ public class VerTarea extends javax.swing.JFrame {
         jLabel7.setText("Publicación:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
 
-        jLabel8.setText("jLabel8");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 90, 20));
+        lblPublicacion.setText("jLabel8");
+        jPanel1.add(lblPublicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 250, 20));
 
-        jLabel10.setText("jLabel8");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 90, 20));
+        lblVencimiento.setText("jLabel8");
+        jPanel1.add(lblVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 250, 20));
 
-        jLabel11.setText("jLabel8");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 90, 20));
+        lblNombre.setText("jLabel8");
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 240, 20));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtADescripcion.setColumns(20);
+        txtADescripcion.setRows(5);
+        txtADescripcion.setEnabled(false);
+        jScrollPane1.setViewportView(txtADescripcion);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 250, 90));
 
@@ -141,6 +149,11 @@ public class VerTarea extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirActionPerformed
+        SubirTarea sb = new SubirTarea(u,a);
+        sb.setVisible(true);
+    }//GEN-LAST:event_btnSubirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,23 +191,22 @@ public class VerTarea extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSubir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPublicacion;
+    private javax.swing.JLabel lblVencimiento;
+    private javax.swing.JTextArea txtADescripcion;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

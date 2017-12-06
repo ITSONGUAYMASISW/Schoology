@@ -66,8 +66,9 @@ public class VerActividades extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        lblNombreCurso = new javax.swing.JLabel();
+        lblVerEntregas = new javax.swing.JLabel();
         lblSalir = new javax.swing.JLabel();
+        lblNombreCurso1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -79,14 +80,16 @@ public class VerActividades extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblNombreCurso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblNombreCurso.setForeground(new java.awt.Color(204, 204, 204));
-        lblNombreCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblVerEntregas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblVerEntregas.setForeground(new java.awt.Color(204, 204, 204));
+        lblVerEntregas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVerEntregas.setText("Ver entregas de actividad");
+        lblVerEntregas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNombreCursoMouseClicked(evt);
+                lblVerEntregasMouseClicked(evt);
             }
         });
-        jPanel2.add(lblNombreCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 170, 40));
+        jPanel2.add(lblVerEntregas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 170, 40));
 
         lblSalir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblSalir.setForeground(new java.awt.Color(204, 204, 204));
@@ -97,6 +100,15 @@ public class VerActividades extends javax.swing.JFrame {
             }
         });
         jPanel2.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, -1, 40));
+
+        lblNombreCurso1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblNombreCurso1.setForeground(new java.awt.Color(204, 204, 204));
+        lblNombreCurso1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNombreCurso1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(lblNombreCurso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 170, 40));
 
         txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
@@ -160,13 +172,17 @@ public class VerActividades extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblNombreCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreCursoMouseClicked
-
-    }//GEN-LAST:event_lblNombreCursoMouseClicked
+    private void lblVerEntregasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerEntregasMouseClicked
+        
+    }//GEN-LAST:event_lblVerEntregasMouseClicked
 
     private void lblSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_lblSalirMouseClicked
+
+    private void lblNombreCurso1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreCurso1MouseClicked
+       
+    }//GEN-LAST:event_lblNombreCurso1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -208,8 +224,9 @@ public class VerActividades extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel6;
     public javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JLabel lblNombreCurso;
+    public javax.swing.JLabel lblNombreCurso1;
     private javax.swing.JLabel lblSalir;
+    public javax.swing.JLabel lblVerEntregas;
     private javax.swing.JTable tbActividades;
     public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables

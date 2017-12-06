@@ -26,7 +26,6 @@ public class Calificacion {
     private int id;
     private Actividad actividad;
     private Usuario estudiante;
-    private Estado estado;
     private Nota nota;
 
     /**
@@ -70,19 +69,6 @@ public class Calificacion {
      */
     public void setEstudiante(Usuario estudiante) {
         this.estudiante = estudiante;
-    }
-    /**
-     * @return the Estado
-     */
-    @Enumerated(EnumType.STRING)
-    public Estado getEstado() {
-        return estado;
-    }
-    /**
-     * @param estado the estado to set
-     */
-    public void setEstado(Estado estado) {
-        this.estado = estado;
     }
     /**
      * @return the Nota

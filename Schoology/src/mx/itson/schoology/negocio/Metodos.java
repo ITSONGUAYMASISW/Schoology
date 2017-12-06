@@ -79,21 +79,60 @@ public class Metodos {
     public boolean RealizarEntrega(String archivoAdjunto, String descripcion, Usuario estudiante, Actividad actividad){
         Entrega entrega = new Entrega();
         Date fechaEntrega = new Date();
+        Estado estado = null;
         entrega.setArchivoAdjunto(archivoAdjunto);
         entrega.setDescripcion(descripcion);
         entrega.setFecha(fechaEntrega);
         entrega.setEstudiante(estudiante);
         entrega.setActividad(actividad);
-        
+                    GregorianCalendar gc = new GregorianCalendar();
+            gc.setTime(entrega.getFecha());
+            
+            
+            GregorianCalendar gc1 = new GregorianCalendar();
+            gc1.setTime(actividad.getVencimiento());
+            
+        if (gc.get(Calendar.DAY_OF_YEAR)>gc1.get(Calendar.DAY_OF_YEAR)) {
+            
+                  entrega.setEstado(estado.TARDE);
+        }else{
+                  entrega.setEstado(estado.A_TIEMPO);
+        }
+        entrega.getEstado();
         return entrega.guardar(entrega);
     }
     
-    public boolean Calificar(Actividad actividad, Usuario estudiante, Estado estado, Nota nota){
+    public boolean Calificar(Actividad actividad, Usuario estudiante, String nota, Entrega entrega){
         Calificacion calificacion = new Calificacion();
+        Estado estado = null;
+        Nota n = null;
         calificacion.setActividad(actividad);
         calificacion.setEstudiante(estudiante);
-        calificacion.setEstado(estado);
-        calificacion.setNota(nota);
+                
+            if (nota.equals(n.CERO.toString())) {
+                calificacion.setNota(n.CERO);
+            }else if(nota.equals(n.UNO.toString())){
+                calificacion.setNota(n.UNO);
+            }else if(nota.equals(n.DOS.toString())){
+                calificacion.setNota(n.DOS);
+            }else if(nota.equals(n.TRES.toString())){
+                calificacion.setNota(n.TRES);
+            }else if(nota.equals(n.CUATRO.toString())){
+                calificacion.setNota(n.CUATRO);
+            }else if(nota.equals(n.CINCO.toString())){
+                calificacion.setNota(n.CINCO);
+            }else if(nota.equals(n.SEIS.toString())){
+                calificacion.setNota(n.SEIS);
+            }else if(nota.equals(n.SIETE.toString())){
+                calificacion.setNota(n.SIETE);
+            }else if(nota.equals(n.OCHO.toString())){
+                calificacion.setNota(n.OCHO);
+            }else if(nota.equals(n.NUEVE.toString())){
+                calificacion.setNota(n.NUEVE);
+            }else if(nota.equals(n.DIEZ.toString())){
+                calificacion.setNota(n.DIEZ);
+            }
+        
         
         return calificacion.guardar(calificacion);
     }
@@ -236,7 +275,29 @@ public class Metodos {
               }
               
           }
+      }
+      
+      public void llenarTablaEntregas(Curso c, DefaultTableModel modelo){
+          
+          Entrega e = new Entrega();
+          List<Entrega> entregas = e.obtenerTodos();
+          String [] datos = new String[3];
+
+          for (int i = 0; i < entregas.size(); i++) {
+              
+              if (entregas.get(i).getActividad().getCurso().getId()==c.getId()) {
+                  
+                   datos[0] = entregas.get(i).getEstudiante().getNombre();
+                   datos[1] = entregas.get(i).getActividad().getNombre();
+                   
+                  modelo.addRow(datos);
+              }
+              
+          }
+          
+          
           
       }
+      
       
 }

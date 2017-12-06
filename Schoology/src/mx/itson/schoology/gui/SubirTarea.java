@@ -5,8 +5,11 @@
  */
 package mx.itson.schoology.gui;
 
+import javax.swing.JOptionPane;
 import mx.itson.schoology.entidades.Actividad;
+import mx.itson.schoology.entidades.Entrega;
 import mx.itson.schoology.entidades.Usuario;
+import mx.itson.schoology.negocio.Metodos;
 
 /**
  *
@@ -16,6 +19,8 @@ public class SubirTarea extends javax.swing.JFrame {
 
     private Usuario u;
     private Actividad a;
+   
+    Metodos m = new Metodos();
     /**
      * Creates new form SubirTarea
      */
@@ -25,6 +30,7 @@ public class SubirTarea extends javax.swing.JFrame {
     public SubirTarea(Usuario u,Actividad a) {
         initComponents();
         this.u = u;
+        this.a=a;
         System.out.println(u.getId());
         System.out.println(u.getNombre());
         txtUsuario.setText(u.getNombre() + " "+ u.getApellido());
@@ -48,13 +54,12 @@ public class SubirTarea extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEnviar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -100,12 +105,14 @@ public class SubirTarea extends javax.swing.JFrame {
         jLabel4.setText("Archivo");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, 30));
 
-        jButton1.setText("Cancelar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 90, -1));
-
-        jButton2.setBackground(new java.awt.Color(51, 102, 255));
-        jButton2.setText("Enviar");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 90, -1));
+        btnEnviar.setBackground(new java.awt.Color(51, 102, 255));
+        btnEnviar.setText("Enviar");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 90, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/schoology/imagenes/logoschoool.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -115,7 +122,7 @@ public class SubirTarea extends javax.swing.JFrame {
         jLabel6.setText("BIENVENIDO/A");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
-        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
         txtUsuario.setText("USUARIO");
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 170, 53));
@@ -133,6 +140,14 @@ public class SubirTarea extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        
+        if(m.RealizarEntrega(txtArchivo.getText(), txtDescripcion.getText(), u, a)){
+            JOptionPane.showMessageDialog(null, "Entrega realizada con éxito");
+            dispose();
+        } 
+    }//GEN-LAST:event_btnEnviarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,8 +185,7 @@ public class SubirTarea extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEnviar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

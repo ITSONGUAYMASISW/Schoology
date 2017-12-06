@@ -35,6 +35,8 @@ public class CursoAlumno extends javax.swing.JFrame {
     
     public CursoAlumno(Usuario u, Curso c) {
         initComponents();
+        this.u=u;
+        this.c=c;
         model.addColumn("Id");
         model.addColumn("Actividad");
         model.addColumn("Publicacion");
@@ -95,7 +97,7 @@ public class CursoAlumno extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/schoology/imagenes/logoschoool.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
         txtUsuario.setText("USUARIO");
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 317, 53));
@@ -127,6 +129,11 @@ public class CursoAlumno extends javax.swing.JFrame {
 
         btnMostrar.setBackground(new java.awt.Color(0, 102, 153));
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 90, -1));
 
         tblActividades.setModel(new javax.swing.table.DefaultTableModel(
@@ -166,6 +173,22 @@ public class CursoAlumno extends javax.swing.JFrame {
         
         this.setVisible(false);
     }//GEN-LAST:event_lblCerrarSesion1MouseClicked
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+
+        int x = Integer.parseInt(tblActividades.getValueAt(tblActividades.getSelectedRow(), 0).toString());
+        
+        
+        for (int i = 0; i < actividades.size(); i++) {
+            if (x == actividades.get(i).getId()) {
+                        VerTarea vt = new VerTarea(u,actividades.get(i));
+                        vt.setVisible(true);
+            }
+        }
+        
+
+                
+    }//GEN-LAST:event_btnMostrarActionPerformed
 
     /**
      * @param args the command line arguments

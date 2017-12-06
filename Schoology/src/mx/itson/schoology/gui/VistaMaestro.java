@@ -46,7 +46,7 @@ DefaultTableModel modeloEntregas;
        tblEntregas.setModel(modeloEntregas);
        
         mt.llenarTablaMiembros(c, modeloMiembros);
-        
+        mt.llenarTablaEntregas(c,modeloEntregas);
         
     }
 
@@ -215,7 +215,7 @@ DefaultTableModel modeloEntregas;
     private void lblListaActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListaActividadesMouseClicked
             VerActividades va = new VerActividades(c);
             va.setVisible(true);
-            va.lblNombreCurso.setText(c.getNombre());
+            va.lblNombreCurso1.setText(c.getNombre());
     }//GEN-LAST:event_lblListaActividadesMouseClicked
 
     private void lblNombreCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreCursoMouseClicked
