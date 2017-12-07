@@ -85,6 +85,8 @@ public class Metodos {
         entrega.setFecha(fechaEntrega);
         entrega.setEstudiante(estudiante);
         entrega.setActividad(actividad);
+        
+        
                     GregorianCalendar gc = new GregorianCalendar();
             gc.setTime(entrega.getFecha());
             
